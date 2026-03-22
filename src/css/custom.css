@@ -1,0 +1,56 @@
+/* Warforge Theme Docs — custom Infima overrides */
+
+:root {
+  --ifm-color-primary: #e67a00;
+  --ifm-color-primary-dark: #cc6a00;
+  --ifm-color-primary-darker: #b85f00;
+  --ifm-color-primary-darkest: #9a4f00;
+  --ifm-color-primary-light: #ff8b00;
+  --ifm-color-primary-lighter: #ff9d2a;
+  --ifm-color-primary-lightest: #ffb560;
+  --ifm-code-font-size: 93%;
+  --ifm-font-family-monospace: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', Consolas, monospace;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 139, 0, 0.12);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #ff8b00;
+  --ifm-color-primary-dark: #e67a00;
+  --ifm-color-primary-darker: #cc6a00;
+  --ifm-color-primary-darkest: #b85f00;
+  --ifm-color-primary-light: #ff9d2a;
+  --ifm-color-primary-lighter: #ffb04d;
+  --ifm-color-primary-lightest: #ffc26e;
+  --ifm-background-color: #131720;
+  --ifm-background-surface-color: #1a1f2b;
+  --ifm-navbar-background-color: #0a0e16;
+  --ifm-footer-background-color: #0a0e16;
+  --ifm-card-background-color: #1a1f2b;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 139, 0, 0.15);
+}
+
+/* Make the sidebar match the theme feel */
+[data-theme='dark'] .menu {
+  background-color: #1a1f2b;
+}
+
+/* Code blocks */
+[data-theme='dark'] .prism-code {
+  background-color: #0a0e16 !important;
+}
+
+/* Admonition tweaks */
+.alert--info {
+  border-left-color: #3498db;
+}
+
+/* Color swatch utility used in design system page */
+.color-swatch {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  vertical-align: middle;
+  margin-right: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+}
