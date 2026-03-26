@@ -1,7 +1,7 @@
 ---
 id: snippets-product-cards
 title: Product Cards
-sidebar_label: 'Product Cards'
+sidebar_label: Product Cards
 ---
 
 # Product Card Snippet
@@ -12,55 +12,55 @@ The product card is the primary component for displaying products in grids, caro
 
 ## Visual Example
 
-<div class="product-card-demo" style="max-width: 320px; margin: 0 auto;">
-<div class="product-card" data-product-card>
-  <div class="product-card__media">
-    <div class="product-card__placeholder-container">
-      <svg class="product-card__placeholder" viewBox="0 0 24 24">
-        <rect x="3" y="3" width="18" height="18" rx="2"/>
-        <circle cx="8.5" cy="8.5" r="1.5"/>
-        <path d="M21 15l-5-5L5 21"/>
-      </svg>
-    </div>
-    <div class="product-card__badges">
-      <span class="badge badge--accent badge--sm">-20%</span>
-    </div>
-  </div>
-  
-  <div class="product-card__content">
-    <div class="product-card__header">
-      <div class="product-card__meta-top">
-        <span class="product-card__category">Miniatures</span>
-        <span class="product-card__sku">SKU: WFG-001</span>
+<div className="product-card-demo">
+  <div className="product-card" data-product-card>
+    <div className="product-card__media">
+      <div className="product-card__placeholder-container">
+        <svg className="product-card__placeholder" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <path d="M21 15l-5-5L5 21"/>
+        </svg>
       </div>
-      <h3 class="product-card__title">Battlefield Resin Skulls</h3>
-    </div>
-    
-    <div class="product-card__body">
-      <div class="product-card__price">
-        <span class="price-current">€24,95</span>
-        <span class="price-old">€31,95</span>
+      <div className="product-card__badges">
+        <span className="badge badge--accent badge--sm">-20%</span>
       </div>
     </div>
     
-    <div class="product-card__footer">
-      <form class="product-card__form">
-        <button type="button" class="btn btn--primary product-card__btn">
-          <span class="btn__content">
-            <span class="btn__icon-wrapper">
-              <svg class="icon" viewBox="0 0 24 24">
-                <circle cx="9" cy="21" r="1"></circle>
-                <circle cx="20" cy="21" r="1"></circle>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-              </svg>
+    <div className="product-card__content">
+      <div className="product-card__header">
+        <div className="product-card__meta-top">
+          <span className="product-card__category">Miniatures</span>
+          <span className="product-card__sku">SKU: WFG-001</span>
+        </div>
+        <h3 className="product-card__title">Battlefield Resin Skulls</h3>
+      </div>
+      
+      <div className="product-card__body">
+        <div className="product-card__price">
+          <span className="price-current">€24,95</span>
+          <span className="price-old">€31,95</span>
+        </div>
+      </div>
+      
+      <div className="product-card__footer">
+        <div className="product-card__form">
+          <button type="button" className="btn btn--primary product-card__btn">
+            <span className="btn__content">
+              <span className="btn__icon-wrapper">
+                <svg className="icon" viewBox="0 0 24 24">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+              </span>
+              <span className="btn__text">Add to Cart</span>
             </span>
-            <span class="btn__text">Add to Cart</span>
-          </span>
-        </button>
-      </form>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 ## Usage

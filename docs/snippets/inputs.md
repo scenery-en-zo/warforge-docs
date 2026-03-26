@@ -12,15 +12,15 @@ The input component renders form input fields with consistent styling, validatio
 
 ## Visual Example
 
-<div class="form-demo">
-  <div class="form-field form-field--md">
+<div className="form-demo">
+  <div className="form-field form-field--md">
     <label htmlFor="demo-input" className="form-label">Email Address</label>
     <div className="input-wrapper">
       <input type="email" id="demo-input" placeholder="you@example.com" className="input-control" />
     </div>
   </div>
 
-  <div class="form-field form-field--md has-error">
+  <div className="form-field form-field--md has-error">
     <label htmlFor="demo-input-error" className="form-label">Username</label>
     <div className="input-wrapper">
       <input type="text" id="demo-input-error" value="invalid_user" className="input-control" />
@@ -28,7 +28,7 @@ The input component renders form input fields with consistent styling, validatio
     <p className="form-error">Username is already taken</p>
   </div>
 
-  <div class="form-field form-field--md">
+  <div className="form-field form-field--md">
     <label htmlFor="demo-input-icon" className="form-label">Search</label>
     <div className="input-wrapper has-leading-icon">
       <span className="input-icon input-icon--leading">

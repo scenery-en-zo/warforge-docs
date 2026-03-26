@@ -625,13 +625,17 @@ hr {
 
 /* Demo Grid for Documentation */
 .product-card-demo {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  display: flex;
+  justify-content: center;
   padding: 24px;
   background-color: var(--bg-900);
   border-radius: 12px;
   margin: 24px 0;
+}
+
+.product-card-demo .product-card {
+  max-width: 320px;
+  width: 100%;
 }
 
 /* Section headers in demo */

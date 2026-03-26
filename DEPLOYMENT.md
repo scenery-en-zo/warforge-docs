@@ -33,9 +33,10 @@ git push origin main
 ```
 
 The workflow will automatically:
-1. Build the Docusaurus site
-2. Deploy to GitHub Pages
-3. Your site will be live at: `https://your-username.github.io/your-repo-name/`
+1. Install dependencies with `npm ci`
+2. Build the Docusaurus site
+3. Deploy to GitHub Pages
+4. Your site will be live at: `https://your-username.github.io/your-repo-name/`
 
 ## GitHub Pages is FREE!
 
@@ -100,6 +101,6 @@ The deployment workflow is at: `.github/workflows/deploy.yml`
 It:
 - Runs on every push to `main`
 - Can be triggered manually
-- Uses pnpm for package management
+- Uses npm for package management
 - Builds to `./build` folder
 - Deploys via GitHub Pages action

@@ -12,20 +12,20 @@ The textarea component renders multi-line text input fields with consistent styl
 
 ## Visual Example
 
-<div class="form-demo">
-  <div class="form-field">
+<div className="form-demo">
+  <div className="form-field">
     <label for="demo-textarea" class="form-label">Message</label>
-    <div class="input-wrapper">
+    <div className="input-wrapper">
       <textarea id="demo-textarea" name="message" placeholder="Write your message..." rows="4" class="input-control textarea-control"></textarea>
     </div>
   </div>
 
-  <div class="form-field has-error">
+  <div className="form-field has-error">
     <label for="demo-textarea-error" class="form-label">Comments</label>
-    <div class="input-wrapper">
+    <div className="input-wrapper">
       <textarea id="demo-textarea-error" name="comments" placeholder="Additional comments..." rows="3" class="input-control textarea-control">Invalid content</textarea>
     </div>
-    <p class="form-error">Please keep comments under 500 characters</p>
+    <p className="form-error">Please keep comments under 500 characters</p>
   </div>
 </div>
 
