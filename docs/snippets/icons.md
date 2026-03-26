@@ -1,14 +1,14 @@
 ---
 id: snippets-icons
 title: Icons
-sidebar_label: 'Icons'
+sidebar_label: Icons
 ---
 
 # Icon Snippet
 
 **File:** `snippets/icon.liquid`
 
-The icon component renders inline SVG icons from the theme's standard library.
+The icon component renders inline SVG icons from the theme standard library.
 
 ## Visual Examples
 
@@ -21,7 +21,6 @@ The icon component renders inline SVG icons from the theme's standard library.
     </svg>
     <span style={{fontSize: '13px', color: 'var(--text-secondary)'}}>cart</span>
   </div>
-  
   <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="11" cy="11" r="8"></circle>
@@ -29,7 +28,6 @@ The icon component renders inline SVG icons from the theme's standard library.
     </svg>
     <span style={{fontSize: '13px', color: 'var(--text-secondary)'}}>search</span>
   </div>
-  
   <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -37,25 +35,24 @@ The icon component renders inline SVG icons from the theme's standard library.
     </svg>
     <span style={{fontSize: '13px', color: 'var(--text-secondary)'}}>user</span>
   </div>
-  
   <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--success)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="20 6 9 17 4 12"></polyline>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="1" y="3" width="15" height="13"></rect>
+      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+      <circle cx="5.5" cy="18.5" r="2.5"></circle>
+      <circle cx="18.5" cy="18.5" r="2.5"></circle>
     </svg>
-    <span style={{fontSize: '13px', color: 'var(--text-secondary)'}}>check</span>
+    <span style={{fontSize: '13px', color: 'var(--text-secondary)'}}>truck</span>
   </div>
 </div>
 
 ## Usage
 
 ```liquid
-{% render 'icon', 
+{% render 'icon',
   name: 'cart',
   size: 'md',
-  variant: 'primary',
-  class: '',
-  aria_hidden: true,
-  aria_label: ''
+  variant: 'accent'
 %}
 ```
 
@@ -63,50 +60,55 @@ The icon component renders inline SVG icons from the theme's standard library.
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `name` | String | Required | Icon name from library |
-| `size` | Select | `md` | Size: `sm` (16px), `md` (20px), `lg` (24px), `xl` (32px) |
-| `variant` | Select | `primary` | Color: `primary`, `secondary`, `muted`, `accent` |
-| `class` | String | — | Additional CSS classes |
+| `name` | String | Required | Icon name |
+| `size` | String | `md` | `sm` (16px), `md` (20px), `lg` (24px), `xl` (32px) |
+| `variant` | String | `primary` | `primary`, `secondary`, `muted`, `accent`, `success`, `warning`, `error`, `info` |
+| `class` | String | - | Additional CSS classes |
 | `aria_hidden` | Boolean | `true` | Hide from screen readers |
-| `aria_label` | String | — | Accessible label if not hidden |
+| `aria_label` | String | - | Accessible label if not hidden |
 
 ## Available Icons
 
-### Navigation
-`menu`, `close`, `search`, `chevron-down`, `plus`, `minus`
-
-### E-commerce
-`cart`, `user`, `user-plus`, `package`
-
-### Communication
-`mail`, `phone`, `map-pin`
-
-### Status
-`check`, `close`, `star`
-
-### UI Actions
-`grid`, `list`, `filter`, `folder`, `palette`
-
-### Shipping
-`truck`
-
-### Gaming
-`dice`
+| Icon Name | Description |
+|-----------|-------------|
+| `cart` | Shopping cart |
+| `search` | Search/magnifying glass |
+| `user` | User/profile |
+| `user-plus` | Add user/register |
+| `truck` | Delivery/shipping |
+| `chevron-down` | Dropdown arrow |
+| `plus` | Add/create |
+| `minus` | Remove/collapse |
+| `close` | Close/X |
+| `menu` | Hamburger menu |
+| `mail` | Email/envelope |
+| `phone` | Phone/telephone |
+| `map-pin` | Location/pin |
+| `package` | Package/box |
+| `star` | Star/rating |
+| `filter` | Filter/funnel |
+| `grid` | Grid view |
+| `list` | List view |
+| `folder` | Folder/category |
+| `dice` | D20 gaming die |
+| `palette` | Colors/design |
+| `logout` | Logout/exit |
 
 ## CSS Classes
 
 | Class | Description |
 |-------|-------------|
-| `.icon-wrapper` | Base wrapper class |
-| `.icon-wrapper--sm` | Small size (16px) |
-| `.icon-wrapper--md` | Medium size (20px) |
-| `.icon-wrapper--lg` | Large size (24px) |
-| `.icon-wrapper--xl` | Extra large size (32px) |
-| `.icon-wrapper--primary` | Primary color |
-| `.icon-wrapper--accent` | Accent color |
-| `.icon` | SVG icon element |
+| `.icon-wrapper` | Base icon container |
+| `.icon-wrapper--sm` | Small (16px) |
+| `.icon-wrapper--md` | Medium (20px) |
+| `.icon-wrapper--lg` | Large (24px) |
+| `.icon-wrapper--xl` | Extra large (32px) |
+| `.icon-wrapper--primary` | Inherits parent color |
+| `.icon-wrapper--secondary` | Secondary text color |
+| `.icon-wrapper--muted` | Muted color |
+| `.icon-wrapper--accent` | Orange accent color |
 
 ## Related
 
-- [Buttons](./snippets-buttons) — Button icons
-- [Badges](./snippets-badges) — Badge icons
+- [Buttons](./snippets-buttons) - Button icons
+- [Header](./sections-header) - Navigation icons

@@ -43,7 +43,7 @@ const config = {
     ({
       colorMode: {
         defaultMode: 'dark',
-        disableSwitch: false,
+        disableSwitch: true,
         respectPrefersColorScheme: true,
       },
       navbar: {
@@ -52,22 +52,10 @@ const config = {
           alt: 'Scenery en Zo',
           src: 'img/logo.webp',
           href: '/',
-          width: 128,
+          width: 50,
           height: 32,
         },
         items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'themeSidebar',
-            position: 'left',
-            label: 'Documentation',
-          },
-          {
-            type: 'doc',
-            docId: 'index',
-            position: 'right',
-            label: 'Overview',
-          },
           {
             href: 'https://scenery-en-zo.myshopify.com',
             label: 'Live Store',

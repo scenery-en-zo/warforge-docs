@@ -1,7 +1,7 @@
 ---
 id: snippets-buttons
 title: Buttons
-sidebar_label: 'Buttons'
+sidebar_label: Buttons
 ---
 
 # Button Snippet
@@ -13,13 +13,10 @@ The button component is used for all call-to-action elements throughout the them
 ## Visual Examples
 
 <div style={{display: 'flex', gap: '16px', flexWrap: 'wrap', padding: '24px', backgroundColor: 'var(--bg-900)', borderRadius: '12px', marginBottom: '24px'}}>
-  <button class="btn btn--primary btn--md" style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '12px 24px', backgroundColor: 'var(--accent-500)', color: 'var(--btn-primary-text)', border: 'none', borderRadius: 'var(--radius-sm)', fontWeight: '700', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '0.5px'}}>
-    Add to Cart
-  </button>
-  
-  <button class="btn btn--primary btn--md" disabled style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '12px 24px', backgroundColor: 'var(--bg-700)', color: 'var(--text-muted)', border: 'none', borderRadius: 'var(--radius-sm)', fontWeight: '700', cursor: 'not-allowed', textTransform: 'uppercase', letterSpacing: '0.5px', opacity: '0.6'}}>
-    Sold Out
-  </button>
+  <button className="btn btn--primary btn--md">Add to Cart</button>
+  <button className="btn btn--secondary btn--md">View Details</button>
+  <button className="btn btn--ghost btn--md">Learn More</button>
+  <button className="btn btn--primary btn--md" disabled>Sold Out</button>
 </div>
 
 ## Usage
@@ -29,11 +26,7 @@ The button component is used for all call-to-action elements throughout the them
   text: 'Add to Cart',
   type: 'submit',
   variant: 'primary',
-  size: 'md',
-  full_width: false,
-  leading_icon: 'cart',
-  disabled: false,
-  loading: false
+  size: 'md'
 %}
 ```
 
@@ -41,62 +34,47 @@ The button component is used for all call-to-action elements throughout the them
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `text` | String | Required | Button label text |
-| `type` | String | `button` | Button type: `button`, `submit`, `reset` |
-| `variant` | Select | `primary` | Variant: `primary`, `secondary`, `ghost` |
-| `size` | Select | `md` | Size: `sm`, `md`, `lg`, `xl` |
-| `full_width` | Boolean | `false` | Make button full width |
-| `leading_icon` | String | — | Icon name before text |
-| `trailing_icon` | String | — | Icon name after text |
-| `url` | String | — | If provided, renders as `<a>` tag |
-| `disabled` | Boolean | `false` | Disable the button |
-| `loading` | Boolean | `false` | Show loading state |
-| `class` | String | — | Additional CSS classes |
-
-## Variants
-
-### Primary
-
-```liquid
-{% render 'button', 
-  text: 'Add to Cart',
-  variant: 'primary'
-%}
-```
-
-### Secondary
-
-```liquid
-{% render 'button', 
-  text: 'Learn More',
-  variant: 'secondary'
-%}
-```
-
-### Ghost
-
-```liquid
-{% render 'button', 
-  text: 'Edit',
-  variant: 'ghost'
-%}
-```
+| `text` | String | Required | Button text |
+| `type` | String | `button` | `button`, `submit` |
+| `variant` | String | `primary` | `primary`, `secondary`, `ghost`, `destructive` |
+| `size` | String | `md` | `sm`, `md`, `lg` |
+| `url` | String | - | If provided, renders as `<a>` tag |
+| `disabled` | Boolean | `false` | Disabled state |
+| `loading` | Boolean | `false` | Loading spinner state |
+| `full_width` | Boolean | `false` | Full width button |
+| `leading_icon` | String | - | Icon name before text |
+| `trailing_icon` | String | - | Icon name after text |
 
 ## CSS Classes
 
 | Class | Description |
 |-------|-------------|
 | `.btn` | Base button class |
-| `.btn--primary` | Primary variant |
-| `.btn--secondary` | Secondary variant |
-| `.btn--ghost` | Ghost variant |
-| `.btn--sm` | Small size |
-| `.btn--md` | Medium size |
-| `.btn--lg` | Large size |
+| `.btn--primary` | Orange accent button |
+| `.btn--secondary` | Dark gray button |
+| `.btn--ghost` | Transparent text button |
+| `.btn--destructive` | Red delete button |
+| `.btn--sm` | Small (36px height) |
+| `.btn--md` | Medium (44px height) |
+| `.btn--lg` | Large (52px height) |
 | `.btn--full` | Full width |
-| `.is-loading` | Loading state |
+| `.btn.is-loading` | Loading state with spinner |
+
+## Variants
+
+### Primary
+Main call-to-action buttons (Add to Cart, Checkout).
+
+### Secondary
+Secondary actions (View Details, Back).
+
+### Ghost
+Minimal text buttons for less prominent actions.
+
+### Destructive
+Danger actions (Delete, Remove).
 
 ## Related
 
-- [Product Cards](./snippets-product-cards) — Add to cart buttons
-- [Icons](./snippets-icons) — Button icons
+- [Badges](./snippets-badges) - Status indicators
+- [Icons](./snippets-icons) - Button icons

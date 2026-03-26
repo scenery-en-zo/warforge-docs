@@ -12,40 +12,40 @@ The checkbox component renders styled checkbox inputs with custom styling, label
 
 ## Visual Example
 
-<div class="form-demo">
-  <div class="checkbox-item">
-    <label class="checkbox-label-ds">
-      <input type="checkbox" name="agree" value="yes" class="checkbox-input-ds">
-      <span class="checkbox-box">
-        <svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<div className="form-demo">
+  <div className="checkbox-item">
+    <label className="checkbox-label-ds">
+      <input type="checkbox" name="agree" value="yes" className="checkbox-input-ds" />
+      <span className="checkbox-box">
+        <svg className="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
       </span>
-      <span class="checkbox-text-ds">I agree to the terms and conditions</span>
+      <span className="checkbox-text-ds">I agree to the terms and conditions</span>
     </label>
   </div>
 
-  <div class="checkbox-item">
-    <label class="checkbox-label-ds">
-      <input type="checkbox" name="checked" value="yes" class="checkbox-input-ds" checked>
-      <span class="checkbox-box">
-        <svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+  <div className="checkbox-item">
+    <label className="checkbox-label-ds">
+      <input type="checkbox" name="checked" value="yes" className="checkbox-input-ds" checked />
+      <span className="checkbox-box">
+        <svg className="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
       </span>
-      <span class="checkbox-text-ds">Checked state</span>
+      <span className="checkbox-text-ds">Checked state</span>
     </label>
   </div>
 
-  <div class="checkbox-item">
-    <label class="checkbox-label-ds">
-      <input type="checkbox" name="disabled" value="yes" class="checkbox-input-ds" disabled>
-      <span class="checkbox-box">
-        <svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+  <div className="checkbox-item">
+    <label className="checkbox-label-ds">
+      <input type="checkbox" name="disabled" value="yes" className="checkbox-input-ds" disabled />
+      <span className="checkbox-box">
+        <svg className="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
       </span>
-      <span class="checkbox-text-ds">Disabled state</span>
+      <span className="checkbox-text-ds">Disabled state</span>
     </label>
   </div>
 </div>

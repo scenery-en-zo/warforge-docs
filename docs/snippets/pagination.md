@@ -1,7 +1,7 @@
 ---
 id: snippets-pagination
 title: Pagination
-sidebar_label: 'Pagination'
+sidebar_label: Pagination
 ---
 
 # Pagination Snippet
@@ -9,32 +9,6 @@ sidebar_label: 'Pagination'
 **File:** `snippets/pagination.liquid`
 
 The pagination component renders navigation for paginated content with previous/next buttons and page numbers.
-
-## Visual Example
-
-<nav class="pagination" role="navigation" aria-label="Pagination">
-  <ul class="pagination__list" role="list">
-    <li class="pagination__item">
-      <button class="pagination__link pagination__link--prev" disabled aria-label="Previous page">
-        <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px;transform:rotate(90deg);"><path d="M6 9l6 6 6-6"></path></svg>
-      </button>
-    </li>
-    <li class="pagination__item">
-      <span class="pagination__link is-active" aria-current="page">1</span>
-    </li>
-    <li class="pagination__item">
-      <a href="/collections/all?page=2" class="pagination__link" aria-label="Page 2">2</a>
-    </li>
-    <li class="pagination__item">
-      <a href="/collections/all?page=3" class="pagination__link" aria-label="Page 3">3</a>
-    </li>
-    <li class="pagination__item">
-      <a href="/collections/all?page=2" class="pagination__link pagination__link--next" aria-label="Next page">
-        <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px;transform:rotate(-90deg);"><path d="M6 9l6 6 6-6"></path></svg>
-      </a>
-    </li>
-  </ul>
-</nav>
 
 ## Usage
 

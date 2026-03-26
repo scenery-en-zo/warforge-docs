@@ -14,27 +14,27 @@ The input component renders form input fields with consistent styling, validatio
 
 <div class="form-demo">
   <div class="form-field form-field--md">
-    <label for="demo-input" class="form-label">Email Address</label>
-    <div class="input-wrapper">
-      <input type="email" id="demo-input" placeholder="you@example.com" class="input-control">
+    <label htmlFor="demo-input" className="form-label">Email Address</label>
+    <div className="input-wrapper">
+      <input type="email" id="demo-input" placeholder="you@example.com" className="input-control" />
     </div>
   </div>
 
   <div class="form-field form-field--md has-error">
-    <label for="demo-input-error" class="form-label">Username</label>
-    <div class="input-wrapper">
-      <input type="text" id="demo-input-error" value="invalid_user" class="input-control">
+    <label htmlFor="demo-input-error" className="form-label">Username</label>
+    <div className="input-wrapper">
+      <input type="text" id="demo-input-error" value="invalid_user" className="input-control" />
     </div>
-    <p class="form-error">Username is already taken</p>
+    <p className="form-error">Username is already taken</p>
   </div>
 
   <div class="form-field form-field--md">
-    <label for="demo-input-icon" class="form-label">Search</label>
-    <div class="input-wrapper has-leading-icon">
-      <span class="input-icon input-icon--leading">
-        <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <label htmlFor="demo-input-icon" className="form-label">Search</label>
+    <div className="input-wrapper has-leading-icon">
+      <span className="input-icon input-icon--leading">
+        <svg className="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       </span>
-      <input type="search" id="demo-input-icon" placeholder="Search..." class="input-control">
+      <input type="search" id="demo-input-icon" placeholder="Search..." className="input-control" />
     </div>
   </div>
 </div>

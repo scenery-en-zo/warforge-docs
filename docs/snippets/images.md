@@ -1,7 +1,7 @@
 ---
 id: snippets-images
 title: Images
-sidebar_label: 'Images'
+sidebar_label: Images
 ---
 
 # Image Snippet
@@ -9,25 +9,6 @@ sidebar_label: 'Images'
 **File:** `snippets/image.liquid`
 
 The image snippet renders responsive images with optional linking and aspect ratio cropping.
-
-## Visual Example
-
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;">
-  <div class="image">
-    <div style="aspect-ratio:4/3;background:var(--bg-950);border-radius:var(--radius-md);overflow:hidden;">
-      <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-        <svg viewBox="0 0 24 24" style="width:64px;height:64px;opacity:0.3;fill:var(--bg-700);"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21" stroke="var(--bg-600)" stroke-width="2" fill="none"/></svg>
-      </div>
-    </div>
-  </div>
-  <a href="#" class="image">
-    <div style="aspect-ratio:16/9;background:var(--bg-950);border-radius:var(--radius-md);overflow:hidden;">
-      <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-        <svg viewBox="0 0 24 24" style="width:64px;height:64px;opacity:0.3;fill:var(--bg-700);"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21" stroke="var(--bg-600)" stroke-width="2" fill="none"/></svg>
-      </div>
-    </div>
-  </a>
-</div>
 
 ## Usage
 

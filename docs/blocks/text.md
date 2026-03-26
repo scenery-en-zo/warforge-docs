@@ -1,7 +1,7 @@
 ---
 id: blocks-text
 title: Text Block
-sidebar_label: 'Text'
+sidebar_label: Text
 ---
 
 # Text Block
@@ -9,14 +9,6 @@ sidebar_label: 'Text'
 **File:** `blocks/text.liquid`
 
 The text block renders configurable text content with style variants and alignment options.
-
-## Visual Example
-
-<div style="display:flex;flex-direction:column;gap:24px;">
-  <div class="text text--title" style="text-align:left;font-size:2rem;font-weight:700;color:white;">Title Style</div>
-  <div class="text text--subtitle" style="text-align:left;font-size:1.5rem;color:var(--text-secondary);">Subtitle Style</div>
-  <div class="text text--normal" style="text-align:left;font-size:1rem;color:var(--text-primary);">Normal text style for body content and descriptions.</div>
-</div>
 
 ## Usage
 
