@@ -11,7 +11,7 @@ const config = {
 
   // GitHub Pages configuration
   url: 'https://scenery-en-zo.github.io',
-  baseUrl: '/',
+  baseUrl: '/warforge-docs/',
   deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'warn',
