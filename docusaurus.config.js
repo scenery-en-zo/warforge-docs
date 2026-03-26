@@ -3,8 +3,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Warforge Theme Docs',
-  tagline: 'Developer & merchant reference for the Scenery en Zo Shopify theme',
+  title: 'Warforge Theme',
+  tagline: 'Premium Shopify theme for tabletop & wargaming stores',
   favicon: 'img/favicon.ico',
 
   future: { v4: true },
@@ -28,6 +28,8 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
           routeBasePath: '/',
+          // Disable MDX expression parsing for Liquid syntax
+          editUrl: 'https://github.com/scenery-en-zo/warforge-docs/edit/main/docs/',
         },
         blog: false,
         theme: {
@@ -36,7 +38,6 @@ const config = {
       }),
     ],
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -46,26 +47,35 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'Warforge Theme',
+        title: 'Scenery en Zo',
         logo: {
           alt: 'Scenery en Zo',
-          src: 'img/logo.svg',
+          src: 'img/logo.webp',
+          href: '/',
+          width: 128,
+          height: 32,
         },
         items: [
           {
             type: 'docSidebar',
             sidebarId: 'themeSidebar',
             position: 'left',
-            label: 'Docs',
+            label: 'Documentation',
           },
           {
-            href: 'https://shopify.dev/docs/storefronts/themes',
-            label: 'Shopify Theme Docs',
+            type: 'doc',
+            docId: 'index',
             position: 'right',
+            label: 'Overview',
           },
           {
             href: 'https://scenery-en-zo.myshopify.com',
             label: 'Live Store',
+            position: 'right',
+          },
+          {
+            href: 'https://shopify.dev/docs/storefronts/themes',
+            label: 'Shopify Docs',
             position: 'right',
           },
         ],

@@ -1,372 +1,518 @@
 ---
 id: snippets
-title: Snippets Reference
-sidebar_position: 5
+title: Snippets
+sidebar_label: 'Snippets'
+sidebar_position: 4
 ---
 
-# Snippets Reference
+# Snippets
 
-Snippets are reusable Liquid fragments in the `snippets/` directory. They are included with the `render` tag:
+This page documents every snippet in the Warforge theme, including parameters, CSS classes, and usage examples.
+
+## What are Snippets?
+
+Snippets are reusable Liquid fragments that can be included anywhere with `
+<!-- Liquid example -->'snippet-name', param: value %}````. Unlike sections, snippets don't have a schema and can't be added via the Theme Editor — they're purely for code reuse.
+
+---
+
+## Button Component (`snippets/button.```liquid`)
+
+<div style={{display: 'flex', gap: '16px', flexWrap: 'wrap'}}>
+  <button class="button button--primary" style={{backgroundColor: '#F97316', color: 'white', padding: '14px 22px', fontWeight: '600', border: 'none', borderRadius: '10px', cursor: 'pointer'}}>
+    Add to Cart
+  </button>
+  <button class="button button--secondary" style={{border: '1px solid #2C3B52', backgroundColor: 'transparent', color: '#F8FAFC', padding: '14px 22px', fontWeight: '600', borderRadius: '10px', cursor: 'pointer'}}>
+    Learn More
+  </button>
+  <button class="button button--ghost" style={{backgroundColor: 'transparent', color: '#94A3B8', padding: '14px 22px', fontWeight: '600', border: 'none', borderRadius: '10px', cursor: 'pointer'}}>
+    Edit
+  </button>
+</div>
+
+### Parameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `label` | String | — | Button text content |
+| `style` | Select | `primary` | Button variant: `primary`, `secondary`, `ghost`, `outline` |
+| `type` | Select | `button` | Element type: `button`, `submit`, `reset` |
+| `href` | URL | — | Make button an anchor link (overrides type) |
+| `target` | String | `_self` | Link target for href buttons |
+| `rel` | String | `noopener` | Link rel attribute for external links |
+| `icon` | String | — | Icon name to render before text |
+
+### Usage Examples
 
 ```liquid
-{% render 'snippet-name', param: value, other_param: other_value %}
-```
-
-:::warning Important
-Unlike sections, snippets run in an **isolated scope**. They cannot access variables created outside of them. You must pass everything they need as parameters. They can access global Liquid objects (`product`, `shop`, `cart`, etc.) directly.
-:::
-
-:::info Shopify documentation
-[Render tag →](https://shopify.dev/docs/api/liquid/tags/render)
-[Snippets →](https://shopify.dev/docs/storefronts/themes/architecture/snippets)
-:::
-
----
-
-## Foundation snippets
-
-### `snippets/css-variables.liquid`
-
-Rendered in `layout/theme.liquid` inside a `{% style %}` tag. Outputs **all CSS custom properties** for the entire design system onto `:root`. Also defines the `.container` class, base `body/html` styles, custom scrollbar, `.visually-hidden`, `.skip-to-content-link`, and `*:focus-visible` focus ring.
-
-**This is where you change:** colors, spacing, fonts, shadows, transitions.
-
-No parameters. Not called with `render` — included via `{% render 'css-variables' %}` in the layout.
-
----
-
-### `snippets/meta-tags.liquid`
-
-Outputs all SEO meta tags, Open Graph tags, Twitter Card meta, structured data (JSON-LD for products), `<title>`, `<link rel="canonical">`, and `<meta name="description">`. Adapts automatically based on the current page type (`template.name`).
-
-No parameters. Rendered in `layout/theme.liquid`.
-
----
-
-## UI component snippets
-
-### `snippets/button.liquid`
-
-The universal button component. Renders as `<a>` when `url` is provided, `<button>` otherwise.
-
-**Parameters:**
-
-| Param | Type | Required | Description |
-|---|---|---|---|
-| `text` | string | Yes | Button label |
-| `url` | string | No | If provided, renders as `<a>` link |
-| `type` | string | No | HTML button type (`submit`, `button`, `reset`) |
-| `variant` | string | No | `primary`, `secondary`, `ghost`, `destructive` |
-| `size` | string | No | `sm` (36px), `md` (44px), `lg` (52px) |
-| `full_width` | boolean | No | Adds `.btn--full` for 100% width |
-| `loading` | boolean | No | Shows a spinner |
-| `disabled` | boolean | No | Disables the button |
-| `aria_label` | string | No | Accessible label override |
-| `class` | string | No | Additional CSS classes |
-| `leading_icon` | string | No | Icon name (from `icon` snippet) before text |
-| `trailing_icon` | string | No | Icon name after text |
-
-**Example:**
 ```liquid
-{% render 'button',
-  text: 'Add to cart',
-  type: 'submit',
-  variant: 'primary',
-  size: 'lg',
-  full_width: true
-%}
 ```
 
-**CSS classes:**
-- `.btn` — base button styles
-- `.btn--primary` — orange background (`--accent-500`), dark text (`--btn-primary-text`)
-- `.btn--secondary` — transparent with border, hover: orange border + text
-- `.btn--ghost` — fully transparent, hover: orange text
-- `.btn--destructive` — red background
-- `.btn--sm/md/lg` — size variants
-- `.btn--full` — 100% width
+<!-- Liquid example -->'button', label: 'Add to Cart', style: 'primary', type: 'submit' %&#125;```
+
+&#123;%- comment %&#125; Secondary outline button &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'button', label: 'Learn More', style: 'secondary', href: '/collections/all' %&#125;```
+
+&#123;%- comment %&#125; Ghost button for small actions &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'button', label: 'Edit', style: 'ghost', type: 'button' %&#125;```
+
+&#123;%- comment %&#125; Button with icon &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'button', label: 'Share', style: 'primary', icon: 'share' %&#125;```
+```
+
+### CSS Classes
+
+| Class | Description |
+|-------|-------------|
+| `.button` | Base button styles |
+| `.button--primary` | Orange CTA button |
+| `.button--secondary` | Outline button |
+| `.button--ghost` | Transparent ghost button |
+| `.button--outline` | Alternative outline style |
 
 ---
 
-### `snippets/icon.liquid`
+## Badge Component (`snippets/badge.```liquid`)
 
-SVG icon library. Renders a `<span class="icon-wrapper">` with an inline SVG inside.
+<div style={{display: 'flex', gap: '16px', flexWrap: 'wrap'}}>
+  <span class="badge badge--miniature" style={{backgroundColor: '#F59E0B', color: '#0F172A', padding: '4px 12px', borderRadius: '6px', fontSize: '12px', fontWeight: '600'}}>
+    Miniature
+  </span>
+  <span class="badge badge--new" style={{backgroundColor: '#22C55E', color: '#0F172A', padding: '4px 12px', borderRadius: '6px', fontSize: '12px', fontWeight: '600'}}>
+    New Arrival
+  </span>
+  <span class="badge badge--out-of-stock" style={{backgroundColor: '#EF4444', color: 'white', padding: '4px 12px', borderRadius: '6px', fontSize: '12px', fontWeight: '600'}}>
+    Out of Stock
+  </span>
+</div>
 
-**Parameters:**
+### Parameters
 
-| Param | Type | Required | Description |
-|---|---|---|---|
-| `name` | string | Yes | Icon name (see list below) |
-| `size` | string | No | `sm` (16px), `md` (20px), `lg` (24px), `xl` (32px) |
-| `variant` | string | No | Color variant: `primary`, `secondary`, `muted`, `accent`, `success`, `warning`, `error`, `info` |
-| `class` | string | No | Additional classes on the wrapper |
-| `aria_hidden` | boolean | No | Defaults to `true` — most icons are decorative |
-| `aria_label` | string | No | For meaningful icons |
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `label` | String | — | Badge text content |
+| `variant` | Select | `default` | Badge style: `miniature`, `new`, `out-of-stock`, `sale`, `preorder` |
+| `href` | URL | — | Optional link for badge |
+| `target` | String | `_self` | Link target |
 
-**Available icons:**
-`truck`, `user`, `user-plus`, `cart`, `search`, `chevron-down`, `logout`, `plus`, `minus`, `close`, `map-pin`, `mail`, `phone`, `package`, `palette`, `grid`, `list`, `folder`, `dice`, `filter`, `star`, `menu`, `calendar`, `clock`, `arrow-right`
+### Usage Examples
 
-**Example:**
+```
+&#123;%- comment %&#125; Miniature product badge &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'badge', label: 'Miniature', variant: 'miniature' %&#125;```
+
+&#123;%- comment %&#125; New arrival badge &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'badge', label: 'New', variant: 'new' %&#125;```
+
+&#123;%- comment %&#125; Out of stock warning &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'badge', label: 'Out of Stock', variant: 'out-of-stock' %&#125;```
+```
+### CSS Classes
+
+| Class | Description |
+|-------|-------------|
+| `.badge` | Base badge styles |
+| `.badge--miniature` | Product category badge |
+| `.badge--new` | New arrival indicator |
+| `.badge--out-of-stock` | Stock status warning |
+| `.badge--sale` | Sale promotion tag |
+
+---
+
+## Breadcrumbs Component (`snippets/breadcrumbs.```liquid`)
+
+<div style={{display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px'}}>
+  <a href="#" style={{color: '#94A3B8', textDecoration: 'none'}}>Home</a>
+  <span style={{color: '#64748B'}}>/</span>
+  <a href="#" style={{color: '#94A3B8', textDecoration: 'none'}}>Miniatures</a>
+  <span style={{color: '#64748B'}}>/</span>
+  <span style={{color: '#F8FAFC', fontWeight: '600'}}>Battlefield Skulls</span>
+</div>
+
+### Parameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `current_page` | String | — | Current page title (not clickable) |
+| `links` | Array | — | Array of `{ label: '...', url: '...' }` objects |
+| `show_home_label` | Boolean | `true` | Show "Home" as first link |
+
+### Usage Examples
+
+```
+```&#123;%- comment %&#125; Product breadcrumbs &#123;% endcomment -%&#125;
+&#123;%!-- Liquid render example --%&#125;'breadcrumbs', links: [&#123; label: 'Miniatures', url: '/collections/miniatures' &#125;], current_page: 'Battlefield Skulls' %&#125;
+
+&#123;%- comment %&#125; Collection breadcrumbs &#123;% endcomment -%&#125;
+&#123;%!-- Liquid render example --%&#125;'breadcrumbs', links: [
+  &#123; label: 'Home', url: '/' &#125;,
+  &#123; label: 'Miniatures', url: '/collections/miniatures' &#125;
+], current_page: 'Battlefield Skulls' %&#125;
+
+&#123;%- comment %&#125; Blog post breadcrumbs &#123;% endcomment -%&#125;
+&#123;%!-- Liquid render example --%&#125;'breadcrumbs', links: [
+  &#123; label: 'Home', url: '/' &#125;,
+  &#123; label: 'Projects', url: '/blogs/projecten' &#125;
+], current_page: 'Painting Factory Floor Bases' %&#125;
+```
+
+### CSS Classes
+
+| Class | Description |
+|-------|-------------|
+| `.breadcrumbs` | Container for breadcrumb trail |
+| `.breadcrumbs__link` | Individual breadcrumb link |
+| `.breadcrumbs__separator` | Slash separator between links |
+
+---
+
+## Product Card Component (`snippets/product-card.```liquid`)
+
+<div style={{backgroundColor: '#1E293B', borderRadius: '14px', padding: '24px', boxShadow: '0 4px 10px rgba(0,0,0,0.25)'}}>
+  <div style={{aspectRatio: '4/3', backgroundColor: '#2C3B52', borderRadius: '8px', marginBottom: '12px'}}></div>
+  <span style={{fontSize: '12px', color: '#94A3B8', textTransform: 'uppercase'}}>Miniatures</span>
+  <h3 style={{fontFamily: "Cinzel, serif", fontSize: '18px', margin: '8px 0'}}>Battlefield Resin Skulls</h3>
+  <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+    <span style={{fontSize: '20px', color: '#F97316'}}>€24,95</span>
+    <button style={{backgroundColor: '#F97316', color: 'white', padding: '8px 16px', fontWeight: '600', border: 'none', borderRadius: '8px', cursor: 'pointer'}}>Add to Cart</button>
+  </div>
+</div>
+
+### Parameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `product` | Object | — | Product object from collection |
+| `show_price` | Boolean | `true` | Show product price |
+| `show_rating` | Boolean | `false` | Show star rating |
+| `variant_id` | Number | — | Specific variant to display |
+| `image_width` | Number | `400` | Image width for rendering |
+
+### Usage Examples
+
+``````liquid
+&#123;%- comment %&#125; Standard product card &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'product-card', product: item, image_width: 400 %&#125;```
+
+&#123;%- comment %&#125; Card without price (for sliders) &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'product-card', product: item, show_price: false, image_width: 300 %&#125;```
+
+&#123;%- comment %&#125; Card with variant selector &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'product-card', product: product, variant_id: selected_variant.id, image_width: 500 %&#125;```
+```
+### CSS Classes
+
+| Class | Description |
+|-------|-------------|
+| `.product-card` | Base card container |
+| `.product-card__image` | Product image wrapper |
+| `.product-card__title` | Product title |
+| `.product-card__price` | Price display |
+| `.product-card__add-to-cart` | Add to cart button |
+
+---
+
+## Blog Card Component (`snippets/article-card.```liquid`)
+
+<div style={{backgroundColor: '#1E293B', borderRadius: '14px', padding: '24px', boxShadow: '0 4px 10px rgba(0,0,0,0.25)'}}>
+  <div style={{aspectRatio: '4/3', backgroundColor: '#2C3B52', borderRadius: '8px', marginBottom: '12px'}}></div>
+  <span style={{fontSize: '10px', color: '#F59E0B', textTransform: 'uppercase', letterSpacing: '0.05em'}}>Projects</span>
+  <h3 style={{fontFamily: "Cinzel, serif", fontSize: '18px', margin: '8px 0'}}>Painting Factory Floor Bases</h3>
+  <p style={{color: '#94A3B8', fontSize: '14px', lineHeight: '1.6', marginBottom: '12px'}}>On request I painted factory floor bases, 40mm round, 12 pieces...</p>
+  <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+    <span style={{fontSize: '12px', color: '#64748B'}}>Feb 26 • 5 min read</span>
+    <a href="#" style={{color: '#F97316', fontWeight: '600', textDecoration: 'none'}}>Read more →</a>
+  </div>
+</div>
+
+### Parameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `article` | Object | — | Blog article object |
+| `image_width` | Number | `400` | Image width for rendering |
+| `show_date` | Boolean | `true` | Show publication date |
+| `show_read_time` | Boolean | `false` | Show reading time estimate |
+
+### Usage Examples
+
 ```liquid
-{% render 'icon', name: 'cart', size: 'md', variant: 'accent' %}
-```
-
----
-
-### `snippets/badge.liquid`
-
-Small inline label/pill component.
-
-**Parameters:**
-
-| Param | Type | Required | Description |
-|---|---|---|---|
-| `text` | string | Yes | Badge label |
-| `variant` | string | No | `primary`, `secondary`, `outline`, `accent`, `success`, `warning`, `error`, `info` |
-| `size` | string | No | `sm` (11px), `md` (12px) |
-| `class` | string | No | Additional classes |
-
-**Example:**
 ```liquid
-{% render 'badge', text: 'SALE', variant: 'accent', size: 'sm' %}
 ```
+
+<!-- Liquid example -->'article-card', article: article, image_width: 400, show_date: true %&#125;```
+
+&#123;%- comment %&#125; Compact card for grid layouts &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'article-card', article: article, image_width: 300, show_date: false %&#125;```
+
+&#123;%- comment %&#125; Large featured card &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'article-card', article: article, image_width: 600, show_read_time: true %&#125;```
+```
+
+### CSS Classes
+
+| Class | Description |
+|-------|-------------|
+| `.article-card` | Base card container |
+| `.article-card__tag` | Category/tag badge |
+| `.article-card__title` | Article title |
+| `.article-card__excerpt` | Article excerpt |
+| `.article-card__meta` | Date and read time |
 
 ---
 
-### `snippets/input.liquid`
+## Icon Component (`snippets/icon.```liquid`)
 
-Form input component with label, optional icons, error state, and helper text.
+<div style={{display: 'flex', gap: '16px', alignItems: 'center'}}>
+  
+<!-- Liquid example -->'icon', name: 'truck', size: 'sm', variant: 'accent' %}```
+  <span class="announcement-text">Free shipping</span>
+  
+  
+<!-- Liquid example -->'icon', name: 'user', size: 'sm', variant: 'secondary' %}```
+  <span>My Account</span>
+  
+  
+<!-- Liquid example -->'icon', name: 'cart', size: 'sm', variant: 'secondary' %}```
+  <span>Cart (0)</span>
+</div>
 
-**Parameters:**
+### Parameters
 
-| Param | Type | Required | Description |
-|---|---|---|---|
-| `type` | string | No | HTML input type (default: `text`) |
-| `name` | string | Yes | `name` attribute |
-| `id` | string | No | `id` attribute (auto-generated from name if omitted) |
-| `value` | string | No | Pre-filled value |
-| `placeholder` | string | No | Placeholder text |
-| `label` | string | No | Label text (omit for label-less inputs) |
-| `size` | string | No | `sm`, `md`, `lg` |
-| `leading_icon` | string | No | Icon name to show inside the left edge |
-| `trailing_icon` | string | No | Icon name to show inside the right edge |
-| `required` | boolean | No | Marks field as required |
-| `disabled` | boolean | No | Disables the input |
-| `error` | string | No | Error message to show below |
-| `helper_text` | string | No | Helper text below the input |
-| `class` | string | No | Additional classes on the wrapper |
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `name` | String | — | Icon name from icon library |
+| `size` | Select | `md` | Icon size: `sm`, `md`, `lg`, `xl` |
+| `variant` | Select | `primary` | Color variant: `primary`, `secondary`, `accent`, `muted` |
 
-**Example:**
+### Usage Examples
+
+```
+&#123;%- comment %&#125; Small accent icon &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'icon', name: 'truck', size: 'sm', variant: 'accent' %&#125;```
+
+&#123;%- comment %&#125; Medium secondary icon &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'icon', name: 'user', size: 'md', variant: 'secondary' %&#125;```
+
+&#123;%- comment %&#125; Large primary icon &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'icon', name: 'menu', size: 'lg', variant: 'primary' %&#125;```
+```
+### Available Icons
+
+The theme includes these icons (from Heroicons or similar):
+
+- `truck` — Free shipping announcement
+- `user` — Account/login icon
+- `user-plus` — Register account icon
+- `cart` — Cart icon
+- `menu` — Mobile menu toggle
+- `chevron-down` — Dropdown indicators
+- `share` — Share button icon
+- `search` — Search icon
+- `close` — Close/exit icon
+- `check` — Success/checkmark icon
+
+### CSS Classes
+
+| Class | Description |
+|-------|-------------|
+| `.icon` | Base icon container |
+| `.icon--sm` | Small icon (16px) |
+| `.icon--md` | Medium icon (24px) |
+| `.icon--lg` | Large icon (32px) |
+| `.icon--xl` | Extra large icon (48px) |
+
+---
+
+## Image Component (`snippets/image.```liquid`)
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px'}}>
+  <div style={{aspectRatio: '1/1', backgroundColor: '#2C3B52', borderRadius: '8px'}}></div>
+  <div style={{aspectRatio: '4/3', backgroundColor: '#2C3B52', borderRadius: '8px'}}></div>
+  <div style={{aspectRatio: '16/9', backgroundColor: '#2C3B52', borderRadius: '8px'}}></div>
+</div>
+
+### Parameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `src` | URL | — | Image source URL |
+| `alt` | String | Empty | Alt text for accessibility |
+| `width` | Number | `auto` | Image width (or 'auto') |
+| `height` | Number | `auto` | Image height (or 'auto') |
+| `crop` | Select | `none` | Crop position: `none`, `left`, `center`, `right`, `top`, `bottom` |
+| `loading` | String | `lazy` | Loading strategy: `lazy`, `eager` |
+
+### Usage Examples
+
+```
+```&#123;%- comment %&#125; Product featured image &#123;% endcomment -%&#125;
+<img />
+
+&#123;%- comment %&#125; Hero background image &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'image', src: hero_section.image, width: 1920, crop: 'center' %&#125;```
+
+&#123;%- comment %&#125; Blog article thumbnail &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'image', src: article.featured_image, width: 400, height: 300, crop: 'left' %&#125;```
+```
+
+### CSS Classes
+
+| Class | Description |
+|-------|-------------|
+| `.image` | Base image wrapper |
+| `.image--product` | Product image (maintains aspect ratio) |
+| `.image--hero` | Hero background image |
+| `.image--thumbnail` | Thumbnail/preview image |
+
+---
+
+## Pagination Component (`snippets/pagination.```liquid`)
+
+<div style={{display: 'flex', gap: '4px'}}>
+  <button style={{backgroundColor: 'transparent', color: '#94A3B8', border: 'none', padding: '8px', cursor: 'pointer'}}>‹ Prev</button>
+  <button style={{backgroundColor: '#F97316', color: 'white', border: 'none', padding: '8px 16px', fontWeight: '600', borderRadius: '6px', cursor: 'pointer'}}>1</button>
+  <button style={{backgroundColor: 'transparent', color: '#94A3B8', border: 'none', padding: '8px', cursor: 'pointer'}}>2</button>
+  <button style={{backgroundColor: 'transparent', color: '#94A3B8', border: 'none', padding: '8px', cursor: 'pointer'}}>3</button>
+  <button style={{backgroundColor: 'transparent', color: '#94A3B8', border: 'none', padding: '8px', cursor: 'pointer'}}>Next ›</button>
+</div>
+
+### Parameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `current_page` | Number | — | Current page number |
+| `total_pages` | Number | — | Total number of pages |
+| `url_base` | String | — | Base URL for pagination links |
+| `show_prev_next` | Boolean | `true` | Show previous/next buttons |
+| `show_page_numbers` | Boolean | `true` | Show page number links |
+
+### Usage Examples
+
+``````liquid
+&#123;%- comment %&#125; Standard pagination &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'pagination', current_page: 1, total_pages: 5, url_base: collection.url %&#125;```
+
+&#123;%- comment %&#125; Pagination without prev/next buttons &#123;% endcomment -%&#125;
+
+<!-- Liquid example -->'pagination', current_page: 2, total_pages: 10, show_prev_next: false %&#125;```
+```
+### CSS Classes
+
+| Class | Description |
+|-------|-------------|
+| `.pagination` | Container for pagination controls |
+| `.pagination__button` | Individual pagination button |
+| `.pagination__current` | Current page indicator |
+
+---
+
+## Cookie Banner Component (`snippets/cookie-banner.```liquid`)
+
+<div style={{backgroundColor: '#1a1f2b', borderRadius: '14px', padding: '24px'}}>
+  <p style={{color: '#CBD5E1', marginBottom: '16px'}}>We use cookies to improve your experience on our battlefield. <a href="/pages/privacy-policy" style={{color: '#F97316'}}>Privacy Policy</a></p>
+  <div style={{display: 'flex', gap: '12px'}}>
+    <button style={{backgroundColor: '#ff8b00', color: '#0a0e16', padding: '10px 24px', fontWeight: '700', border: 'none', borderRadius: '4px', cursor: 'pointer'}}>Accept</button>
+    <button style={{backgroundColor: '#131720', color: 'white', border: '1px solid #3e4a5d', padding: '10px 24px', fontWeight: '700', borderRadius: '4px', cursor: 'pointer'}}>Decline</button>
+  </div>
+</div>
+
+### Parameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `show_banner` | Boolean | `true` | Whether to show the banner |
+| `banner_text` | String | — | Custom banner text |
+| `privacy_policy_url` | URL | — | Privacy policy link |
+
+### Usage Examples
+
 ```liquid
-{% render 'input',
-  type: 'email',
-  name: 'contact[email]',
-  label: 'Email address',
-  placeholder: 'you@example.com',
-  required: true,
-  trailing_icon: 'mail'
-%}
-```
-
----
-
-### `snippets/textarea.liquid`
-
-Textarea component sharing the same styles as `input.liquid`.
-
-| Param | Type | Description |
-|---|---|---|
-| `name` | string | Required — `name` attribute |
-| `label` | string | Label text |
-| `rows` | number | Number of rows (default: 5) |
-| `placeholder` | string | Placeholder text |
-| `required` | boolean | Required field |
-
----
-
-### `snippets/checkbox.liquid`
-
-Custom-styled checkbox. The native `<input type="checkbox">` is hidden and replaced with a custom `.checkbox-box` styled in CSS.
-
-| Param | Type | Description |
-|---|---|---|
-| `name` | string | Input `name` attribute |
-| `value` | string | Input `value` attribute |
-| `id` | string | Input `id` |
-| `label` | string | Label text |
-| `checked` | boolean | Pre-checked state |
-
-Checked state uses `--accent-500` as background. Focus-visible state uses a double-ring outline.
-
----
-
-### `snippets/image.liquid`
-
-Responsive image wrapper. Renders as `<a>` if `url` is provided, `<div>` otherwise.
-
-| Param | Type | Description |
-|---|---|---|
-| `image` | image | Shopify image object |
-| `url` | string | Optional link URL |
-| `css_class` | string | Additional CSS class |
-| `width` | number | Image render width |
-| `height` | number | Image render height |
-| `crop` | string | Crop position (`center`, `top`, `bottom`, `left`, `right`) |
-
----
-
-### `snippets/pagination.liquid`
-
-Pagination nav. Pass the Shopify `paginate` object as a parameter.
-
-| Param | Type | Description |
-|---|---|---|
-| `paginate` | object | The Shopify `paginate` object from a `{% paginate %}` block |
-
-**Example:**
 ```liquid
-{% paginate collection.products by 24 %}
-  {% for product in collection.products %}
-    ...
-  {% endfor %}
-  {% render 'pagination', paginate: paginate %}
-{% endpaginate %}
 ```
 
----
+<!-- Liquid example -->'cookie-banner', show_banner: true, privacy_policy_url: '/pages/privacy-policy' %&#125;```
 
-### `snippets/breadcrumbs.liquid`
+&#123;%- comment %&#125; Hidden banner (after acceptance) &#123;% endcomment -%&#125;
 
-Context-aware breadcrumb navigation bar. Automatically detects the current page type (collection, product, article, blog, page) and builds the appropriate trail. No parameters needed — reads global Liquid objects.
+<!-- Liquid example -->'cookie-banner', show_banner: false %&#125;```
+```
 
----
+### CSS Classes
 
-## Card snippets
-
-### `snippets/product-card.liquid`
-
-The main product card used everywhere products are listed. See [Product Cards](./product-cards) for full documentation.
-
----
-
-### `snippets/article-card.liquid`
-
-Standard blog article card for grid layouts. Full card is clickable.
-
-| Param | Type | Description |
-|---|---|---|
-| `article` | object | Shopify article object |
-| `blog` | object | Shopify blog object |
-| `is_featured` | boolean | Featured variant spans full grid width |
+| Class | Description |
+|-------|-------------|
+| `.cookie-banner` | Banner container |
+| `.cookie-banner__text` | Banner text content |
+| `.cookie-banner__accept` | Accept button |
+| `.cookie-banner__decline` | Decline button |
 
 ---
 
-### `snippets/article-card-masonry.liquid`
+## Meta Tags Component (`snippets/meta-tags.```liquid`)
 
-Variable-height card for masonry grid. Three size variants: `small`, `medium`, `large`.
 
-| Param | Type | Description |
-|---|---|---|
-| `article` | object | Article object |
-| `blog` | object | Blog object |
-| `card_style` | string | `small`, `medium`, or `large` |
-| `is_featured` | boolean | Featured spans 2 columns |
+<!-- Liquid example -->'meta-tags' %}
+```
+### Description
 
----
+Generates all SEO meta tags for the page including:
 
-### `snippets/article-card-compact.liquid`
+- Title tag
+- Meta description
+- Open Graph tags (og:title, og:description, og:image)
+- Twitter Card tags
+- Canonical URL
+- Robots meta tag
 
-Horizontal compact card (image + content side by side) for list-style blog layouts.
+### Usage
 
----
-
-### `snippets/article-card-large.liquid`
-
-Large-format card with a tall image, gradient tag overlay, and a full button CTA.
+This snippet is automatically rendered in `layout/theme.```liquid` and doesn't need to be called manually.
 
 ---
 
-### `snippets/blog-preview-card.liquid`
+## CSS Variables Snippet (`snippets/css-variables.```liquid`)
 
-Homepage blog preview card with a distinctive date badge (day/month stacked on an orange square). No parameters beyond the standard `article` and `blog`.
 
----
+<!-- Liquid example -->'css-variables' %}
+```
 
-### `snippets/collection-card.liquid`
+### Description
 
-Collection tile with a circular image on a white background.
+Injects CSS custom properties into the `<head>` for all design tokens:
 
-| Param | Type | Description |
-|---|---|---|
-| `collection` | object | Shopify collection object |
-| `class` | string | Additional CSS class |
+- Color palette (backgrounds, accents, text)
+- Typography scale (font sizes, line heights)
+- Spacing scale (--space-1 through --space-9)
+- Border radius scale (--radius-sm through --radius-xl)
+- Shadow definitions
+- Transition timing functions
 
----
+### Usage
 
-## Navigation snippets
-
-### `snippets/nav-structured-dropdown.liquid`
-
-Renders hardcoded dropdown content for specific navigation keys. Used inside the header for rich category dropdowns.
-
-| Param | Type | Description |
-|---|---|---|
-| `key` | string | Navigation key: `miniatures`, `terrain-scenery`, `paints`, etc. |
-| `variant` | string | `desktop` or `mobile` |
+This snippet is automatically rendered in `layout/theme.```liquid` and provides the foundation for all theme styling.
 
 ---
 
-### `snippets/mega-menu.liquid`
+## Learn More
 
-A data-driven mega menu that reads the `collections` global and uses `collection.metafields.custom.parent_collection` to build a 3-level hierarchy. **Not currently wired into the header.**
+- [Shopify Snippets reference](https://shopify.dev/docs/storefronts/themes/architecture/snippets)
+- [Theme editor guide](https://shopify.dev/docs/storefronts/themes/tools/online-editor)
 
----
-
-### `snippets/translated-link-title.liquid`
-
-Maps Shopify link handles to translation keys for multilingual navigation labels.
-
-| Param | Type | Description |
-|---|---|---|
-| `link` | object | A Shopify link list link object |
-
----
-
-## Utility snippets
-
-### `snippets/product-meta-link-list.liquid`
-
-Renders a single metadata row (`<div class="meta-item">`) with linked values for product detail pages. Resolves collection URLs through a 7-step cascade. Used extensively in `sections/product-main.liquid` to render metafield data.
-
-| Param | Description |
-|---|---|
-| `primary_metafield` | Main metafield to display |
-| `fallback_metafield` | Fallback if primary is empty |
-| `label` | Display label string |
-| `label_key` | Translation key for the label |
-| `primary_filter` / `fallback_filter` | Filter URL query parameter name |
-| `base_collection_url` | Base URL for building filter links |
-| `product_type_handle` | Product type handle for URL building |
-| `prefer_filter_url` | Whether to prefer filter URL over collection URL |
-
----
-
-### `snippets/table.liquid`
-
-No HTML output — only a `{% stylesheet %}` block that applies design-system table styles to any `table`, `th`, `td` in the page. Include it on any page where you want styled tables.
-
----
-
-### `snippets/cookie-banner.liquid`
-
-Custom cookie consent banner (slides up from the bottom). Checks `localStorage` for `scenery_en_zo_cookies_accepted`. Rendered directly in `layout/theme.liquid`.
-
----
-
-### `snippets/ambient-scene-layer.liquid`
-
-A full-screen Three.js canvas overlay with floating RPG dice and ember particles. Used as an ambient background effect on select pages.
-
-| Param | Type | Description |
-|---|---|---|
-| `preset` | string | `home`, `about`, or `blog` — controls the color scheme |

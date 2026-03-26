@@ -1,228 +1,262 @@
 ---
 id: architecture
 title: Architecture
-sidebar_position: 2
+sidebar_label: "Architecture"
+sidebar_position: 3
 ---
 
-# Architecture
+# Theme Architecture
 
-This page explains the directory structure of the theme and how all the pieces fit together.
+This document explains how the Warforge theme is structured and how its files relate to each other.
 
-## Directory structure
+## Directory Structure
 
-```
+```bash
 warforge/
-├── assets/
-│   ├── critical.css          # Loaded on every page (reset, app overrides, global utilities)
-│   ├── theme.js              # Global JS utilities (debounce, throttle, slider init)
-│   ├── three.module.min.js   # Three.js ES module (WebGL dice/ember effects)
-│   ├── three.min.js          # Three.js UMD fallback
-│   ├── handwriting-draft.ttf # Custom font for the logo tagline
-│   ├── icon-account.svg
-│   ├── icon-cart.svg
-│   └── shoppy-x-ray.svg
-│
-├── blocks/
-│   ├── group.liquid          # Nestable layout container (horizontal/vertical)
-│   └── text.liquid           # Text content block (title/subtitle/normal styles)
-│
-├── config/
-│   ├── settings_schema.json  # Defines global theme settings in the theme editor
-│   └── settings_data.json    # Saved values for those settings (managed by Shopify)
-│
-├── layout/
-│   ├── theme.liquid          # Root HTML shell for all pages
-│   └── password.liquid       # Minimal shell for the password/coming-soon page
-│
-├── locales/
-│   ├── en.default.json       # English translations (storefront strings)
-│   ├── en.default.schema.json# English translations (theme editor strings)
-│   ├── nl.json / nl.schema.json
-│   ├── de.json / de.schema.json
-│   ├── fr.json / fr.schema.json
-│   ├── es.json / es.schema.json
-│   └── it.json / it.schema.json
-│
-├── sections/                 # 53 section files (see Sections reference)
-│
-├── snippets/                 # 26 snippet files (see Snippets reference)
-│
-└── templates/                # JSON files wiring sections to page types
-    ├── index.json            # Homepage
-    ├── product.json          # Default product page
-    ├── product.base.json     # Base product variant
-    ├── product.miniature.json# Miniature product variant
-    ├── product.paint.json    # Paint product variant
-    ├── product.terrain.json  # Terrain product variant
-    ├── product.tool.json     # Tool product variant
-    ├── collection.json       # Collection (shop) page
-    ├── article.json          # Single blog post
-    ├── blog.json             # Blog listing (grid)
-    ├── blog.cards.json       # Blog listing (large cards)
-    ├── blog.compact.json     # Blog listing (compact list)
-    ├── blog.masonry.json     # Blog listing (masonry)
-    ├── cart.json
-    ├── search.json
+├── assets/              # Static files (CSS, JS, images, fonts)
+│   ├── css/            # Compiled CSS files
+│   │   ├── critical.css      # Above-the-fold styles
+│   │   └── styles.css        # All other styles
+│   ├── js/             # JavaScript files
+│   │   ├── three.module.min.js  # Three.js for WebGL effects
+│   │   └── custom.js          # Custom interactions
+│   ├── fonts/          # Custom font files
+│   │   └── handwriting-draft.ttf  # Logo tagline font
+│   └── images/         # Theme images (logos, icons)
+│       └── shoppy-x-ray.svg    # Theme logo
+├── blocks/             # Reusable theme editor blocks
+│   ├── group.liquid    # Group container block
+│   ├── text.liquid     # Text content block
+│   └── schema.json     # Block settings configuration
+├── config/             # Global theme settings
+│   ├── settings_schema.json   # Theme editor settings definitions
+│   └── settings_data.json     # Default setting values
+├── design_system/      # Component documentation
+│   ├── COMPONENT_*.md  # Individual component docs
+│   └── DESIGN_SYSTEM.md       # Main design system reference
+├── layout/             # Root HTML wrappers
+│   ├── theme.liquid    # Main layout template
+│   └── password.liquid # Password page layout
+├── locales/            # Translation files
+│   ├── default.json    # English translations
+│   ├── nl.json         # Dutch translations
+│   └── de.json         # German translations
+├── refference_design/  # UI component reference docs
+│   ├── ACCESIBILITY_GUIDELINES.md
+│   ├── BUTTON_COMPONENT.md
+│   ├── CARD_COMPONENT.md
+│   └── ... (30+ component docs)
+├── sections/           # Full-width page components
+│   ├── 404.liquid      # 404 error page
+│   ├── about.liquid    # About page section
+│   ├── article.liquid  # Article layout
+│   ├── blog-preview.liquid     # Blog preview grid
+│   ├── cart.liquid     # Cart page
+│   ├── collection-grid.liquid  # Collection product grid
+│   ├── collection-header.liquid # Collection header
+│   ├── collection-toolbar.liquid # Collection filters
+│   ├── collections.liquid # Collections listing
+│   ├── customer-account.liquid # Account dashboard
+│   ├── customer-addresses.liquid # Address management
+│   ├── customer-login.liquid # Login page
+│   ├── customer-order.liquid # Order details
+│   ├── customer-register.liquid # Registration form
+│   ├── featured-collections.liquid # Featured collections grid
+│   ├── featured-offers.liquid # Promotional offers
+│   ├── featured-products.liquid # Featured products grid
+│   ├── features.liquid # Feature blocks
+│   ├── footer-group.json # Footer columns config
+│   ├── footer.liquid   # Main footer
+│   ├── header-group.json # Header sections config
+│   ├── header.liquid   # Main header (logo, nav)
+│   ├── hero.liquid     # Hero section
+│   ├── image-with-text.liquid # Image + text layout
+│   ├── main-article.liquid # Article content
+│   ├── main-blog.liquid # Blog listing
+│   ├── main-contact.liquid # Contact page
+│   ├── main-list-blogs.liquid # Multiple blogs listing
+│   ├── main-list-collections.liquid # Collections grid
+│   ├── new-arrivals.liquid # New products section
+│   ├── newest-products.liquid # Recently added products
+│   ├── newsletter.liquid # Email signup form
+│   ├── page.liquid     # Generic page layout
+│   ├── password.liquid # Password page
+│   ├── popular-tags.liquid # Tag cloud filter
+│   ├── predictive-search.liquid # Search suggestions
+│   ├── product-context.liquid # Product meta info
+│   ├── product-details.liquid # Product details tab
+│   ├── product-main.liquid # Main product content
+│   ├── product.liquid  # Product layout
+│   ├── promo-block.liquid # Promotional block
+│   ├── related-products.liquid # Related products grid
+│   └── ... (40+ sections total)
+├── snippets/           # Reusable Liquid fragments
+│   ├── ambient-scene-layer.liquid # 3D scene layer
+│   ├── article-card-compact.liquid # Compact blog card
+│   ├── article-card-large.liquid # Large blog card
+│   ├── article-card-masonry.liquid # Masonry blog grid
+│   ├── article-card.liquid # Standard blog card
+│   ├── badge.liquid    # Badge component
+│   ├── blog-preview-card.liquid # Blog preview card
+│   ├── breadcrumb.liquid # Breadcrumb navigation
+│   ├── button.liquid   # Button component
+│   ├── card.liquid     # Card component
+│   ├── cart-drawer.liquid # Slide-out cart
+│   ├── cookie-banner.liquid # Cookie consent
+│   ├── favicon.liquid  # Favicon markup
+│   ├── filters.liquid  # Filter controls
+│   ├── icon.liquid     # Icon library
+│   ├── input.liquid    # Form input
+│   ├── modal.liquid    # Modal dialog
+│   ├── pagination.liquid # Pagination controls
+│   ├── product-card.liquid # Product card
+│   ├── radio.liquid    # Radio button
+│   ├── select.liquid   # Dropdown select
+│   ├── social-icons.liquid # Social media links
+│   ├── textarea.liquid # Text area input
+│   ├── toast.liquid    # Toast notification
+│   └── ... (26+ snippets total)
+└── templates/          # JSON template files
     ├── 404.json
-    ├── page.json             # Generic page
-    ├── page.about.json       # About Us page
-    ├── page.contact.json     # Contact page
-    ├── page.list-blogs.json  # Blogs overview page
-    ├── page.blog-categories.json
-    ├── list-collections.json # All collections page
+    ├── article.json
+    ├── blog.json
+    ├── cart.json
+    ├── collection.json
+    ├── customers
+    │   ├── account.json
+    │   ├── activate_account.json
+    │   ├── addresses.json
+    │   ├── login.json
+    │   ├── order.json
+    │   └── register.json
+    ├── gift_card.json
+    ├── index.json
+    ├── list-collections.json
+    ├── page.about.json
+    ├── page.contact.json
+    ├── page.faq.json
+    ├── page.json
     ├── password.json
-    ├── gift_card.liquid      # Gift card (Liquid template, not JSON)
-    └── customers/
-        ├── account.json
-        ├── addresses.json
-        ├── login.json
-        ├── order.json
-        └── register.json
+    ├── product.json
+    └── search.json
 ```
 
----
+## File Types Explained
 
-## How a page request flows
+### Liquid Files (`.liquid`)
 
-When a visitor loads a page, this is what happens:
+Shopify template files that combine HTML with Liquid templating language.
 
-```
-Browser request
-     │
-     ▼
-Shopify server
-     │  Picks the right template (e.g. templates/collection.json)
-     │  Renders layout/theme.liquid as the outer HTML shell
-     │  Inside layout: renders css-variables snippet (design tokens in <head>)
-     │  Inside layout: renders meta-tags snippet (SEO tags in <head>)
-     │  Inside layout: renders header-group sections
-     │  Inside layout: renders {{ content_for_layout }}
-     │       │
-     │       └── Each section listed in the template is rendered in order
-     │           Each section can render snippets with {% render %}
-     │           CSS from {% stylesheet %} tags is bundled and linked
-     │           JS from {% javascript %} tags is bundled and linked
-     │
-     ▼
-Browser receives complete HTML
-```
-
-### Why CSS is split across files
-
-- **`assets/critical.css`** — loaded with `<link rel="stylesheet">` on every page. Contains the CSS reset, global base styles, and third-party app overrides (Wishlist Hero, Shopify Privacy Banner). This is loaded first because it's always needed.
-
-- **`{% stylesheet %}` in section/snippet files** — Shopify bundles all these together into a single compiled stylesheet (`compiled_assets/styles.css`). Each section/snippet's CSS is only included once even if the snippet is rendered many times.
-
-- **`{% style %}` in `snippets/css-variables.liquid`** — inlined directly into `<head>` as a `<style>` tag so CSS custom properties are available before any other CSS loads.
-
-:::info Shopify documentation
-[Stylesheet tag →](https://shopify.dev/docs/api/liquid/tags/stylesheet)
-:::
-
----
-
-## How sections and templates relate
-
-A **template** (JSON file) is just a list of section IDs. Example from `templates/index.json`:
-
-```json
-{
-  "sections": {
-    "hero": { "type": "hero", "settings": { ... } },
-    "features": { "type": "features", "settings": { ... } },
-    "featured-products": { "type": "featured-products", "blocks": { ... } }
-  },
-  "order": ["hero", "features", "featured-products"]
-}
-```
-
-The `type` field refers to the filename in `sections/` without the `.liquid` extension. So `"type": "hero"` renders `sections/hero.liquid`.
-
-When merchants click "Customize" in the Shopify admin, the theme editor reads these JSON files to show the correct sections in the sidebar.
-
-:::info Shopify documentation
-[Templates →](https://shopify.dev/docs/storefronts/themes/architecture/templates)
-[JSON templates →](https://shopify.dev/docs/storefronts/themes/architecture/templates/json-templates)
-:::
-
----
-
-## How the `{% schema %}` tag works
-
-Every section (and block) has a `{% schema %}` tag at the bottom. This JSON tells the theme editor what settings to show for that section. Example:
-
+**Example:**
 ```liquid
+{% comment %} sections/hero.liquid {% endcomment %}
+<div class="hero">
+  <h1>{{ section.settings.headline }}</h1>
+  <p>{{ section.settings.description }}</p>
+  <a href="{{ section.settings.button_url }}" class="button">
+    {{ section.settings.button_label }}
+  </a>
+</div>
+
 {% schema %}
 {
-  "name": "Hero Banner",
+  "name": "Hero",
   "settings": [
     {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "Background image"
-    },
-    {
       "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Welcome"
+      "id": "headline",
+      "label": "Headline"
     }
-  ],
-  "presets": [
-    { "name": "Hero Banner" }
   ]
 }
 {% endschema %}
 ```
 
-Inside the section, settings are accessed via `section.settings.background_image`, `section.settings.heading`, etc.
+### JSON Templates
 
-Block settings are accessed via `block.settings.some_setting` inside a `{% for block in section.blocks %}` loop.
+Define which sections appear on each page type and in what order.
 
-:::info Shopify documentation
-[Schema tag →](https://shopify.dev/docs/storefronts/themes/architecture/sections/section-schema)
-[Input settings →](https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings)
-:::
-
----
-
-## Section groups
-
-The header and footer are managed by **section groups** — special JSON files in `sections/`:
-
-- `sections/header-group.json` — wraps the header section
-- `sections/footer-group.json` — wraps the footer section
-
-In `layout/theme.liquid`, they're rendered with:
-
-```liquid
-{% sections 'header-group' %}
-{% sections 'footer-group' %}
+**Example:**
+```json
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "headline": "Welcome to Warforge"
+      }
+    },
+    "featured-products": {
+      "type": "featured-products",
+      "settings": {
+        "limit": 8
+      }
+    }
+  },
+  "order": ["hero", "featured-products"]
+}
 ```
 
-This means the header and footer appear on **every page** regardless of the template.
+### Schema JSON
 
-:::info Shopify documentation
-[Section groups →](https://shopify.dev/docs/storefronts/themes/architecture/section-groups)
-:::
+Configuration blocks inside section files that define editable settings.
 
----
-
-## Translation / localization
-
-All user-facing text uses the `| t` filter:
-
-```liquid
-{{ 'general.add_to_cart' | t }}
+**Example:**
+```json
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured Products"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 2,
+      "max": 12,
+      "step": 2,
+      "label": "Products",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products"
+    }
+  ]
+}
+{% endschema %}
 ```
 
-The translation strings live in `locales/en.default.json`. The schema versions (`en.default.schema.json`) contain strings shown inside the theme editor (setting labels, option names, etc.).
+## How Files Relate
 
-To add a new translatable string:
-1. Add the key to `locales/en.default.json` (and all other language files)
-2. Use `{{ 'your.key' | t }}` in the Liquid file
+### Template → Sections → Snippets
 
-:::info Shopify documentation
-[Locales →](https://shopify.dev/docs/storefronts/themes/architecture/locales)
-[Translation filter →](https://shopify.dev/docs/api/liquid/filters/translate)
-:::
+```
+templates/index.json
+  └── sections/hero.liquid
+      └── snippets/button.liquid
+  └── sections/featured-products.liquid
+      └── snippets/product-card.liquid
+  └── sections/newsletter.liquid
+      └── snippets/input.liquid
+```
+
+### Layout Wraps Everything
+
+```
+layout/theme.liquid
+  └── {{ content_for_header }}
+  └── {{ content_for_layout }} (all template sections render here)
+  └── Footer snippets
+```
+
+## Related Documentation
+
+- [Sections](./sections) — Complete section reference
+- [Snippets](./snippets) — Complete snippet reference
+- [Templates](./templates) — Template configuration guide

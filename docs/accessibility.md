@@ -77,7 +77,6 @@ function contrast(hex1, hex2) {
 
 console.log(contrast('#ff8b00', '#1a1f2b')); // 7.02
 ```
-
 **WCAG thresholds:**
 - AA normal text: **4.5:1**
 - AA large text (≥18px or ≥14px bold): **3:1**
@@ -103,11 +102,11 @@ For cards with **two links** to the same URL (image link + content link):
 - The content link has no `aria-label` — screen readers read its visible text
 
 **Affected files:**
-- `snippets/product-card.liquid` — `.product-card__content-link` and `.product-card__media-link`
-- `snippets/article-card.liquid` — `.article-card__link`
-- `snippets/article-card-large.liquid` — `.article-card-large__link`
-- `snippets/article-card-masonry.liquid` — `.article-card-masonry__link`
-- `snippets/blog-preview-card.liquid` — `.blog-preview__link`
+- `snippets/product-card.```liquid` — `.product-card__content-link` and `.product-card__media-link`
+- `snippets/article-card.```liquid` — `.article-card__link`
+- `snippets/article-card-large.```liquid` — `.article-card-large__link`
+- `snippets/article-card-masonry.```liquid` — `.article-card-masonry__link`
+- `snippets/blog-preview-card.```liquid` — `.blog-preview__link`
 
 ---
 
@@ -129,12 +128,11 @@ Shopify exposes a set of CSS custom properties that penetrate the shadow boundar
   --shopify-privacy-banner-secondary-button-text-color: #ffffff;
 }
 ```
-
-These are set in `snippets/css-variables.liquid`.
+These are set in `snippets/css-variables.```liquid`.
 
 ### Shadow DOM injection
 
-`layout/theme.liquid` contains a MutationObserver that watches for the privacy banner element being added to the DOM. When found, it injects a `<style>` element directly into the shadow root to override button colors:
+`layout/theme.```liquid` contains a MutationObserver that watches for the privacy banner element being added to the DOM. When found, it injects a `<style>` element directly into the shadow root to override button colors:
 
 ```javascript
 const applyToShadow = (el) => {
@@ -151,7 +149,6 @@ const applyToShadow = (el) => {
   }
 };
 ```
-
 ### The `#shopify-pc__banner__body-policy-link` limitation
 
 The policy link inside the banner is styled by Shopify's own CSS, and Shopify does not expose a CSS custom property for its color. Our shadow DOM injection targets buttons and general links, which catches most elements including this link. However, if the link class name changes in a future Shopify update, the override may stop working.
@@ -179,14 +176,13 @@ WCAG large text rules (3:1 AA / 4.5:1 AAA) apply to text ≥18px or ≥14px bold
 
 ## Skip to content link
 
-A visually hidden skip link is included in `layout/theme.liquid`:
+A visually hidden skip link is included in `layout/theme.```liquid`:
 
 ```html
 <a class="skip-to-content-link visually-hidden" href="#MainContent">
   Skip to content
 </a>
 ```
-
 It becomes visible on focus (using `:focus-visible`), allowing keyboard users to skip the navigation.
 
 ---
@@ -201,7 +197,6 @@ All interactive elements have a visible focus ring defined globally:
   box-shadow: 0 0 0 2px var(--bg-900), 0 0 0 4px var(--accent-500);
 }
 ```
-
 This creates a two-layer ring: inner dark ring for separation, outer orange ring for visibility. The `:focus-visible` pseudo-class only triggers for keyboard navigation (not mouse clicks), avoiding visual clutter for mouse users.
 
 ---
@@ -217,23 +212,21 @@ The Three.js hero and ambient scene effects are automatically disabled for users
   }
 }
 ```
-
 In JavaScript:
 ```javascript
 const isReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (isReducedMotion()) return; // skip all animation
 ```
-
 ---
 
 ## iFrame titles
 
-`layout/theme.liquid` includes a script that automatically adds `title` attributes to any `<iframe>` elements that are missing one:
+`layout/theme.```liquid` includes a script that automatically adds `title` attributes to any `<iframe>` elements that are missing one:
 
 ```javascript
 document.querySelectorAll('iframe:not([title])').forEach(iframe => {
   iframe.setAttribute('title', iframe.id || iframe.name || 'Content frame');
 });
 ```
-
 This runs on `DOMContentLoaded` and again after 1.5 seconds (to catch dynamically added iframes from third-party apps).
+

@@ -18,7 +18,7 @@ Always work on the **development theme** (duplicate your live theme first) so ch
 
 ### Change the accent orange color
 
-**File:** `snippets/css-variables.liquid`
+**File:** `snippets/css-variables.`
 
 Find and update:
 ```css
@@ -27,37 +27,32 @@ Find and update:
 --accent-700: #cc6a00; /* Even darker — usually 75% brightness */
 --accent-glow: rgba(255, 139, 0, 0.3); /* Shadow glow — match the RGB of accent-500 */
 ```
-
-Also update the hardcoded rgba in `sections/product-main.liquid`:
+Also update the hardcoded rgba in `sections/product-main.
 ```css
 border-bottom: 1px dashed rgba(255, 139, 0, 0.45); /* Match your new color */
 ```
-
-And `sections/collection-grid.liquid`:
+And `sections/collection-grid`.
 ```css
 box-shadow: 0 0 0 3px rgba(255, 139, 0, 0.28); /* Match your new color */
 ```
-
 :::warning Check contrast after changing
 Run a contrast check against `--bg-800` (`#1a1f2b`). Your accent must achieve at least **4.5:1** (WCAG AA) for normal text, **7:1** (WCAG AAA) for full compliance. Use the formula in the [Accessibility](./accessibility) page.
 :::
 
 ### Change the button text color
 
-**File:** `snippets/css-variables.liquid`
+**File:** `snippets/css-variables.`
 
 ```css
 --btn-primary-text: #0a0e16; /* Dark text on orange buttons */
 ```
-
-Also update `layout/theme.liquid` (the privacy banner injection):
-```javascript
+Also update `layout/theme.` (the privacy banner injection):
+```css
 color: #0a0e16 !important; /* Inside the styleText template literal */
 ```
-
 ### Change the background colors
 
-**File:** `snippets/css-variables.liquid`
+**File:** `snippets/css-variables.`
 
 ```css
 --bg-950: #0a0e16;  /* Darkest */
@@ -65,57 +60,51 @@ color: #0a0e16 !important; /* Inside the styleText template literal */
 --bg-800: #1a1f2b;  /* Cards, panels */
 --bg-700: #3e4a5d;  /* Borders */
 ```
-
-Also update `layout/theme.liquid` — the privacy banner uses hardcoded hex values that reference these backgrounds:
+Also update `layout/theme.` — the privacy banner uses hardcoded hex values that reference these backgrounds:
 ```css
 --shopify-privacy-banner-background-color: #1a1f2b !important; /* = bg-800 */
 --shopify-privacy-banner-secondary-button-background-color: #131720 !important; /* = bg-900 */
 ```
-
 And the shadow DOM injection script in the same file:
 ```javascript
 background-color: #1a1f2b !important; /* Update to match new bg-800 */
 ```
-
 ### Change the price color
 
-**File:** `snippets/css-variables.liquid`
+**File:** `snippets/css-variables.`
 
 ```css
 --price-color: #2ecc71; /* Green */
 ```
-
 ---
 
 ## Typography
 
 ### Change the heading font (Cinzel)
 
-**File:** `snippets/css-variables.liquid`
+**File:** `snippets/css-variables.`
 
 ```css
 --font-display: "Cinzel", "Playfair Display", Georgia, serif;
 ```
-
-Replace `"Cinzel"` with any Google Font name. Then load the font in `layout/theme.liquid` — find the `<link>` tag that loads Google Fonts and update the family name.
+Replace `"Cinzel"` with any Google Font name. Then load the font in `layout/theme.` — find the `<link />` tag that loads Google Fonts and update the family name.
 
 :::info
-Cinzel is already loaded via a Google Fonts `<link>` tag in the layout. If you switch to a different font, update both the CSS variable and the Google Fonts URL.
+Cinzel is already loaded via a Google Fonts `<link />` tag in the layout. If you switch to a different font, update both the CSS variable and the Google Fonts URL.
 :::
 
 ### Change the body font
 
-**File:** `snippets/css-variables.liquid`
+**File:** `snippets/css-variables.```liquid`
 
 ```css
 --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 ```
-
-Inter is a system font — no external loading needed. If you switch to a non-system font, add a `<link rel="preconnect">` and `<link rel="stylesheet">` to `layout/theme.liquid`.
+Inter is a system font — no external loading needed. If you switch to a non-system font, add a `<link />` and `<link />` to `layout/theme.`.
 
 ### Change font sizes
 
-**File:** `snippets/css-variables.liquid`
+**File:** `snippets/css-variables.`
 
 Find the type scale section and adjust:
 ```css
@@ -125,16 +114,14 @@ Find the type scale section and adjust:
 --text-body-md: 16px;     /* Default body text */
 /* etc. */
 ```
-
 ### Change the logo tagline font or text
 
-**File:** `sections/header.liquid`
+**File:** `sections/header.`
 
 Find the tagline span:
 ```html
 <span class="header-logo__tagline">Originaliteit door creativiteit</span>
 ```
-
 The font is declared via `@font-face` using `assets/handwriting-draft.ttf`. To change the font, replace the TTF file and update the `@font-face` declaration above the tagline's CSS.
 
 ---
@@ -145,22 +132,21 @@ The font is declared via `@font-face` using `assets/handwriting-draft.ttf`. To c
 
 **Option 1 — Theme editor:** Go to **Customize → Theme settings → Layout → Page width**. Options: 1280px, 1440px, 1600px.
 
-**Option 2 — Code:** In `config/settings_schema.json`, add more options to the `max_page_width` select setting. The selected value flows into `--page-width` via `css-variables.liquid`.
+**Option 2 — Code:** In `config/settings_schema.json`, add more options to the `max_page_width` select setting. The selected value flows into `--page-width` via `css-variables.`.
 
 ### Change horizontal page padding
 
 **Theme editor:** Go to **Customize → Theme settings → Layout → Minimum page margin**.
 
-Or in code (`snippets/css-variables.liquid`):
+Or in code (`snippets/css-variables.`):
 ```css
 --page-margin: {{ settings.min_page_margin }}px;
 ```
-
 ### Change spacing between sections
 
 Sections use `.section-padding` for vertical space:
 ```css
-/* In snippets/css-variables.liquid */
+/* In snippets/css-variables.```liquid */
 .section-padding {
   padding: var(--space-8) 0; /* = 48px top and bottom */
 }
@@ -171,7 +157,6 @@ Sections use `.section-padding` for vertical space:
   }
 }
 ```
-
 ---
 
 ## Homepage
@@ -194,7 +179,7 @@ Sections use `.section-padding` for vertical space:
 
 **Theme editor:** Click **Hero Banner** → uncheck **Enable 3D effects**.
 
-Or for a permanent code change, in `sections/hero.liquid` find `section.settings.enable_3d_fx` and set the default to `false` in the `{% schema %}`.
+Or for a permanent code change, in `sections/hero.` find `section.settings.enable_3d_fx` and set the default to `false` in the `{% schema %}`.
 
 ### Change the "Weekly Deals" heading
 
@@ -223,7 +208,7 @@ Or for a permanent code change, in `sections/hero.liquid` find `section.settings
 
 ### Add rich dropdown content for a category
 
-Edit `snippets/nav-structured-dropdown.liquid`. Find the `{% case key %}` block and add a new `{% when 'your-handle' %}` case. The `key` corresponds to the menu item's link handle.
+Edit `snippets/nav-structured-dropdown.`. Find the `{% case key %}` block and add a new `{% when 'your-handle' %}` case. The `key` corresponds to the menu item's link handle.
 
 ---
 
@@ -233,27 +218,23 @@ Edit `snippets/nav-structured-dropdown.liquid`. Find the `{% case key %}` block 
 
 1. Create a metafield definition in **Shopify Admin → Settings → Custom data → Products**. Use a namespace like `custom` and a key like `my_field`.
 
-2. In `sections/product-main.liquid`, find the metadata footer block. Add a new call to `product-meta-link-list`:
+2. In `sections/product-main.`, find the metadata footer block. Add a new call to `product-meta-link-list`:
 
 ```liquid
-{% if product.metafields.custom.my_field != blank %}
-  {% render 'product-meta-link-list',
+ 'product-meta-link-list',
     primary_metafield: product.metafields.custom.my_field,
     label_key: 'products.product.my_field_label',
     base_collection_url: collection.url | default: routes.collections_url,
     product_type_handle: product.type | handleize,
     primary_filter: 'filter.p.m.custom.my_field'
-  %}
-{% endif %}
+{%!-- Liquid loop/conditional --%}
 ```
 
 3. Add a translation key to `locales/en.default.json`:
 ```json
-"products": {
   "product": {
     "my_field_label": "My Field"
   }
-}
 ```
 
 ### Change the number of product columns in a collection
@@ -262,12 +243,10 @@ Edit `snippets/nav-structured-dropdown.liquid`. Find the `{% case key %}` block 
 
 ### Change the product image aspect ratio
 
-**File:** `snippets/product-card.liquid`
+**File:** `snippets/product-card.`
 
 ```css
-.product-card__media {
   aspect-ratio: 1 / 1; /* Change to e.g. 4 / 3 or 3 / 4 */
-}
 ```
 
 ---
@@ -308,7 +287,7 @@ The blog will automatically appear in the blog navigation if you add it to the m
 
 ## Adding a new section to the theme
 
-1. Create `sections/my-section.liquid` with content, `{% stylesheet %}`, and `{% schema %}`:
+1. Create `sections/my-section.` with content, `{% stylesheet %}`, and `{% schema %}`:
 
 ```liquid
 <div class="my-section">
@@ -318,30 +297,29 @@ The blog will automatically appear in the blog navigation if you add it to the m
 </div>
 
 {% stylesheet %}
-  .my-section {
+  .my-section &#123;
     padding: var(--space-8) 0;
     background-color: var(--bg-900);
-  }
+  &#125;
 {% endstylesheet %}
 
 {% schema %}
-{
+&#123;
   "name": "My Section",
   "settings": [
-    {
+    &#123;
       "type": "text",
       "id": "heading",
       "label": "Heading",
       "default": "My Section"
-    }
+    &#125;
   ],
   "presets": [
-    { "name": "My Section" }
+    &#123; "name": "My Section" &#125;
   ]
-}
+&#125;
 {% endschema %}
 ```
-
 2. Add it to a template via the theme editor or directly in the template JSON.
 
 :::info Shopify documentation
@@ -361,7 +339,6 @@ The blog will automatically appear in the blog navigation if you add it to the m
   }
 }
 ```
-
 2. Add the same key to all other locale files (`nl.json`, `de.json`, etc.) with appropriate translations.
 
 3. Use it in Liquid:
@@ -387,3 +364,4 @@ The safest workflow is:
 4. Preview and verify
 5. Merge to main and push to the live theme
 :::
+

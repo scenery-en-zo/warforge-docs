@@ -36,9 +36,8 @@ A template JSON file looks like this:
   "order": ["hero", "features"]
 }
 ```
-
 - **`sections`** — a dictionary where each key is a unique section instance ID
-- **`type`** — the filename of the section in `sections/` (without `.liquid`)
+- **`type`** — the filename of the section in `sections/` (without `.```liquid`)
 - **`settings`** — the current saved values for that section's settings
 - **`order`** — the render order (top to bottom)
 
@@ -75,7 +74,7 @@ Shopify maps page types to template files automatically:
 | Blog categories grid | `templates/page.blog-categories.json` | Category tags grid |
 | All collections | `templates/list-collections.json` | `/collections` page |
 | Password | `templates/password.json` | Coming-soon password page |
-| Gift card | `templates/gift_card.liquid` | Liquid (not JSON) — required by Shopify |
+| Gift card | `templates/gift_card.```liquid` | Liquid (not JSON) — required by Shopify |
 | Customer account | `templates/customers/account.json` | |
 | Customer addresses | `templates/customers/addresses.json` | |
 | Customer login | `templates/customers/login.json` | |
@@ -107,29 +106,28 @@ Shopify maps page types to template files automatically:
 ```
 templates/index.json sections, in order:
 ┌─────────────────────────────────────────┐
-│  hero (sections/hero.liquid)            │
+│  hero (sections/hero.```liquid)            │
 │  Full-width hero with 3D dice effect    │
 ├─────────────────────────────────────────┤
-│  features (sections/features.liquid)    │
+│  features (sections/features.```liquid)    │
 │  3-column selling point highlights      │
 ├─────────────────────────────────────────┤
 │  featured-products                      │
-│  (sections/featured-products.liquid)    │
+│  (sections/featured-products.```liquid)    │
 │  "Weekly Deals" product slider          │
 ├─────────────────────────────────────────┤
 │  featured-offers                        │
-│  (sections/featured-offers.liquid)      │
+│  (sections/featured-offers.```liquid)      │
 │  Second product slider                  │
 ├─────────────────────────────────────────┤
-│  newsletter (sections/newsletter.liquid)│
+│  newsletter (sections/newsletter.```liquid)│
 │  Email signup card                      │
 ├─────────────────────────────────────────┤
 │  blog-preview                           │
-│  (sections/blog-preview.liquid)         │
+│  (sections/blog-preview.```liquid)         │
 │  Recent articles grid                   │
 └─────────────────────────────────────────┘
 ```
-
 ---
 
 ## Product page template structure
@@ -137,22 +135,21 @@ templates/index.json sections, in order:
 ```
 templates/product.json sections, in order:
 ┌─────────────────────────────────────────────────┐
-│  product-main (sections/product-main.liquid)    │
+│  product-main (sections/product-main.```liquid)    │
 │  Image gallery | Product info, variants, form   │
 ├─────────────────────────────────────────────────┤
 │  product-details                                │
-│  (sections/product-details.liquid)              │
+│  (sections/product-details.```liquid)              │
 │  Tabbed: Description / Specs / Shipping         │
 ├─────────────────────────────────────────────────┤
 │  related-products                               │
-│  (sections/related-products.liquid)             │
+│  (sections/related-products.```liquid)             │
 │  "Related Products" slider                      │
 ├─────────────────────────────────────────────────┤
-│  trust-block (sections/trust-block.liquid)      │
+│  trust-block (sections/trust-block.```liquid)      │
 │  Security / Shipping / Returns row              │
 └─────────────────────────────────────────────────┘
 ```
-
 The `product.miniature.json` and `product.terrain.json` templates insert `product-context` between `product-main` and `product-details`, adding structured attribute metadata (race, class, weapon, etc.).
 
 ---
@@ -162,7 +159,7 @@ The `product.miniature.json` and `product.terrain.json` templates insert `produc
 ```
 templates/collection.json sections, in order:
 ┌───────────────────────────────────────────────────────┐
-│  collection-grid (sections/collection-grid.liquid)    │
+│  collection-grid (sections/collection-grid.```liquid)    │
 │  ┌────────────────┬───────────────────────────────┐   │
 │  │ Filters        │ Toolbar (sort + view toggle)  │   │
 │  │ sidebar        │ Product grid (3–5 columns)    │   │
@@ -170,7 +167,6 @@ templates/collection.json sections, in order:
 │  └────────────────┴───────────────────────────────┘   │
 └───────────────────────────────────────────────────────┘
 ```
-
 ---
 
 ## Adding a new section to a template
@@ -192,12 +188,12 @@ templates/collection.json sections, in order:
        "heading": "New Arrivals"
      }
    }
-   ```
-3. Add the key to the `order` array at the position you want
+```
 4. Commit and push — Shopify will pick it up automatically
 
 ---
 
-## The `gift_card.liquid` exception
+## The `gift_card.```liquid` exception
 
-`templates/gift_card.liquid` is the one remaining Liquid template (not JSON). It is required by Shopify and handles the gift card redemption page. It cannot be converted to JSON — Shopify mandates the `.liquid` format for gift cards.
+`templates/gift_card.```liquid` is the one remaining Liquid template (not JSON). It is required by Shopify and handles the gift card redemption page. It cannot be converted to JSON — Shopify mandates the `.```liquid` format for gift cards.
+

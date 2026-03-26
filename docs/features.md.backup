@@ -1,0 +1,213 @@
+---
+id: features
+title: Features Section
+sidebar_label: 'Features'
+---
+
+# Features Section
+
+The features section displays benefit blocks highlighting key selling points like free shipping, quality guarantees, and delivery information.
+
+## Visual Examples
+
+  <!-- Free Shipping Feature -->
+  <div style={{textAlign: 'center', padding: '32px 24px', backgroundColor: '#2C3B52', borderRadius: '12px'}}>
+    ```liquid
+&#123;% render 'icon', name: 'truck', size: 'xl', variant: 'accent' %&#125;
+    ```
+    <h4 style={{fontFamily: 'Cinzel', serif', fontSize: '16px', color: '#F8FAFC', margin: '16px 0 8px 0'}}>Free Shipping</h4>
+    <p style={{color: '#94A3B8', fontSize: '13px', lineHeight: '1.6', margin: '0'}}>On all orders over €100</p>
+  </div>
+  
+  <!-- Quality Guarantee -->
+  <div style={{textAlign: 'center', padding: '32px 24px', backgroundColor: '#2C3B52', borderRadius: '12px'}}>
+```liquid
+&#123;% render 'icon', name: 'check', size: 'xl', variant: 'success' %&#125;
+```
+    <p style={{color: '#94A3B8', fontSize: '13px', lineHeight: '1.6', margin: '0'}}>Premium materials, always</p>
+  </div>
+  
+  <!-- Fast Delivery -->
+  <div style={{textAlign: 'center', padding: '32px 24px', backgroundColor: '#2C3B52', borderRadius: '12px'}}>
+    ```liquid
+```liquid
+```
+&#123;% render 'icon', name: 'clock', size: 'xl', variant: 'primary' %&#125;
+```    <h4 style={{fontFamily: 'Cinzel', serif', fontSize: '16px', color: '#F8FAFC', margin: '16px 0 8px 0'}}>Fast Delivery</h4>
+    <p style={{color: '#94A3B8', fontSize: '13px', lineHeight: '1.6', margin: '0'}}>2-5 business days</p>
+  </div>
+</div>
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px'}}>
+  <!-- Features with Background -->
+  <div style={{backgroundColor: '#1A2033', borderRadius: '8px', padding: '24px'}}>
+    <h4 style={{fontFamily: 'Cinzel', serif', fontSize: '14px', marginBottom: '12px'}}>With Background</h4>
+    <p style={{color: '#94A3B8', fontSize: '12px', lineHeight: '1.6'}}>Features section with decorative background.</p>
+  </div>
+  
+  <!-- Features Alternating -->
+  <div style={{backgroundColor: '#1A2033', borderRadius: '8px', padding: '24px'}}>
+    <h4 style={{fontFamily: 'Cinzel', serif', fontSize: '14px', marginBottom: '12px'}}>Alternating Layout</h4>
+    <p style={{color: '#94A3B8', fontSize: '12px', lineHeight: '1.6'}}>Features with alternating text/icon sides.</p>
+  </div>
+  
+  <!-- Features List -->
+  <div style={{backgroundColor: '#1A2033', borderRadius: '8px', padding: '24px'}}>
+    <h4 style={{fontFamily: 'Cinzel', serif', fontSize: '14px', marginBottom: '12px'}}>List Layout</h4>
+    <p style={{color: '#94A3B8', fontSize: '12px', lineHeight: '1.6'}}>Features displayed as list items.</p>
+  </div>
+  
+  <!-- Features Grid -->
+  <div style={{backgroundColor: '#1A2033', borderRadius: '8px', padding: '24px'}}>
+    <h4 style={{fontFamily: 'Cinzel', serif', fontSize: '14px', marginBottom: '12px'}}>Grid Layout</h4>
+    <p style={{color: '#94A3B8', fontSize: '12px', lineHeight: '1.6'}}>Features in responsive grid layout.</p>
+  </div>
+</div>
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px'}}>
+  <!-- Feature Block 1 -->
+  <div style={{textAlign: 'center', padding: '24px'}}>
+```
+``````liquid
+&#123;% render 'icon', name: 'truck', size: 'lg', variant: 'accent' %&#125;
+```
+    <p style={{color: '#94A3B8', fontSize: '11px', lineHeight: '1.4', margin: '0'}}>€100+ orders</p>
+  </div>
+  
+  <!-- Feature Block 2 -->
+  <div style={{textAlign: 'center', padding: '24px'}}>
+    ```liquid
+```liquid
+```
+&#123;% render 'icon', name: 'check', size: 'lg', variant: 'success' %&#125;
+```    <h5 style={{fontFamily: 'Cinzel', serif', fontSize: '13px', color: '#F8FAFC', margin: '12px 0 4px 0'}}>Quality Assured</h5>
+    <p style={{color: '#94A3B8', fontSize: '11px', lineHeight: '1.4', margin: '0'}}>Premium materials</p>
+  </div>
+  
+  <!-- Feature Block 3 -->
+  <div style={{textAlign: 'center', padding: '24px'}}>
+```
+``````liquid
+&#123;% render 'icon', name: 'clock', size: 'lg', variant: 'primary' %&#125;
+```
+    <p style={{color: '#94A3B8', fontSize: '11px', lineHeight: '1.4', margin: '0'}}>2-5 business days</p>
+  </div>
+  
+  <!-- Feature Block 4 -->
+  <div style={{textAlign: 'center', padding: '24px'}}>
+    ```liquid
+```liquid
+```
+&#123;% render 'icon', name: 'user', size: 'lg', variant: 'muted' %&#125;
+```    <h5 style={{fontFamily: 'Cinzel', serif', fontSize: '13px', color: '#F8FAFC', margin: '12px 0 4px 0'}}>Expert Support</h5>
+    <p style={{color: '#94A3B8', fontSize: '11px', lineHeight: '1.4', margin: '0'}}>Dedicated assistance</p>
+  </div>
+</div>
+
+## Component Overview
+
+The features section highlights key selling points and benefits:
+
+- **Free Shipping** — Threshold-based free delivery
+- **Quality Guarantee** — Premium materials assurance
+- **Fast Delivery** — Estimated shipping times
+- **Expert Support** — Customer service information
+- **Secure Payment** — Safe checkout guarantee
+
+## Feature Types
+
+### Standard Features Grid
+
+Default 3-column feature grid:
+
+```
+``````liquid
+&#123;% section 'features' %&#125;
+```
+**Features:**
+- Free Shipping (€100+ orders)
+- Quality Guaranteed
+- Fast Delivery (2-5 days)
+
+### Features with Background
+
+Features with decorative background:
+
+```liquid
+```liquid
+```
+&#123;% section 'features-background', 
+  background_color: '#0A0E16'
+%&#125;
+```
+### Alternating Features
+
+Features with alternating icon/text sides:
+
+```
+``````liquid
+&#123;% section 'features-alternating', 
+  features: [
+    &#123; icon: 'truck', title: 'Free Shipping', text: 'On orders over €100' &#125;,
+    &#123; icon: 'check', title: 'Quality Assured', text: 'Premium materials only' &#125;
+  ]
+%&#125;
+```
+## Parameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `features` | Array | Required | Array of feature objects |
+| `layout` | Select | `grid` | Layout: `grid`, `alternating`, `list` |
+| `background_color` | String | — | Background color for section |
+
+## Usage Examples
+
+### Standard Features Grid
+
+```liquid
+```liquid
+```
+&#123;% render 'section-features', 
+  features: [
+    &#123; icon: 'truck', title: 'Free Shipping', text: 'On all orders over €100' &#125;,
+    &#123; icon: 'check', title: 'Quality Guaranteed', text: 'Premium materials, always' &#125;,
+    &#123; icon: 'clock', title: 'Fast Delivery', text: '2-5 business days standard shipping' &#125;
+  ]
+%&#125;
+```
+### Features with Background
+
+```
+``````liquid
+&#123;% render 'section-features', 
+  features: [
+    &#123; icon: 'truck', title: 'Free Shipping', text: '€100+ orders qualify' &#125;,
+    &#123; icon: 'check', title: 'Quality Assured', text: 'Premium materials guaranteed' &#125;
+  ],
+  layout: 'grid',
+  background_color: '#1A2033'
+%&#125;
+```
+## CSS Classes
+
+| Class | Description |
+|-------|-------------|
+| `.features` | Features container |
+| `.feature-block` | Individual feature block |
+| `.feature-icon` | Feature icon element |
+| `.feature-title` | Feature heading |
+| `.feature-text` | Feature description |
+
+## Accessibility
+
+- All icons have aria-labels with descriptive text
+- Focus visible on all interactive elements
+- Screen readers announce feature titles correctly
+- Keyboard navigation supported
+
+## Related Sections
+
+- [Hero](./hero) — Hero section typically above features
+- [Featured Products](./featured-products) — Products below features
+- [Newsletter](./newsletter) — Newsletter after features

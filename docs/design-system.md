@@ -1,224 +1,403 @@
 ---
 id: design-system
 title: Design System
-sidebar_position: 3
+sidebar_label: 'Design System'
+sidebar_position: 2
 ---
 
 # Design System
 
-All design tokens — colors, typography, spacing, shadows, and transitions — are defined as CSS custom properties in **`snippets/css-variables.liquid`**. This file is rendered inside a `{% style %}` tag in `layout/theme.liquid`, injecting a `<style>` block directly into `<head>` on every page.
+This document defines the complete visual language for the Warforge theme, including colors, typography, spacing, components, and patterns.
 
-To change any design token, edit `snippets/css-variables.liquid`.
+## Color System
 
----
+### Background Scale
 
-## Color palette
+| Token    | Hex     | Usage                    |
+|----------|---------|--------------------------|
+| `bg-900` | #0F172A | Page background          |
+| `bg-800` | #162033 | Section blocks           |
+| `bg-700` | #1E293B | Cards, elevated panels   |
+| `bg-600` | #243247 | Form inputs, hover states|
+| `bg-500` | #2C3B52 | Secondary surfaces       |
 
-The theme uses a dark-mode-only palette built around dark navy-blues and a vibrant orange accent.
+### Accent (Brand Orange)
 
-### Background scale
+| Token         | Hex                  | Usage              |
+|---------------|----------------------|--------------------|
+| `accent-500`  | #F97316              | Primary CTA        |
+| `accent-600`  | #EA580C              | Hover state        |
+| `accent-700`  | #C2410C              | Active/Pressed     |
+| `accent-glow` | rgba(249,115,22,.35) | Focus ring         |
 
-| Variable | Value | Use |
-|---|---|---|
-| `--bg-950` | `#0a0e16` | Deepest background (page body on some pages, dropdowns, overlays) |
-| `--bg-900` | `#131720` | Page background (`body` background) |
-| `--bg-800` | `#1a1f2b` | Cards, panels, sidebars, form containers |
-| `--bg-700` | `#3e4a5d` | Borders, dividers, subtle separators |
-| `--bg-600` | `#4a5a73` | Slightly lighter borders, card borders |
-| `--bg-500` | `#5b6f8c` | Lightest dark — rarely used |
+### Semantic Colors
 
-The scale goes **darker** as the number gets **higher**. `--bg-950` is the darkest.
+| Type    | Hex     | Usage            |
+|---------|---------|------------------|
+| Success | #22C55E | Confirmations    |
+| Warning | #F59E0B | Alerts, badges   |
+| Error   | #EF4444 | Error states     |
+| Info    | #3B82F6 | Notices          |
 
-:::tip Why this structure
-Cards (`--bg-800`) sit on top of the page background (`--bg-900`). This gives subtle visual layering — cards look slightly elevated because they're lighter than the surface behind them. Borders (`--bg-700`) are lighter still so they're visible against the card background.
-:::
+### Text Hierarchy
 
-### Accent — orange
-
-| Variable | Value | Use |
-|---|---|---|
-| `--accent-500` | `#ff8b00` | **Primary accent** — links, active states, titles in cards, buttons |
-| `--accent-600` | `#e67a00` | Hover/darker accent |
-| `--accent-700` | `#cc6a00` | Even darker accent |
-| `--accent-glow` | `rgba(255,139,0,0.3)` | Box shadows and glow effects |
-
-`--accent-500` (`#ff8b00`) achieves **7.02:1 contrast** against `--bg-800` (`#1a1f2b`), meeting WCAG AAA.
-
-### Button text
-
-| Variable | Value | Use |
-|---|---|---|
-| `--btn-primary-text` | `#0a0e16` | Dark text on orange buttons — 8.23:1 contrast ratio |
-
-Orange buttons always use dark text (not white) for contrast compliance.
-
-### Text
-
-| Variable | Value | Use |
-|---|---|---|
-| `--text-primary` | `#ffffff` | Main content text, headings |
-| `--text-secondary` | `#cbd5e1` | Supporting text, meta info, excerpts |
-| `--text-muted` | `#cbd5e1` | Placeholder-level text (same value as secondary) |
-| `--text-disabled` | `#94a3b8` | Disabled state text |
-
-### Semantic
-
-| Variable | Value | Use |
-|---|---|---|
-| `--price-color` | `#2ecc71` | Product prices (green = positive/available) |
-| `--success` | `#2ecc71` | Success messages, in-stock indicator |
-| `--warning` | `#f1c40f` | Warning alerts |
-| `--error` | `#e74c3c` | Error messages, form validation |
-| `--info` | `#3498db` | Info alerts |
+| Token          | Hex     | Usage                    |
+|----------------|---------|--------------------------|
+| `text-primary` | #F8FAFC | Headings, primary text   |
+| `text-secondary` | #CBD5E1 | Body text                |
+| `text-muted`   | #94A3B8 | Secondary labels         |
+| `text-disabled` | #64748B | Disabled states          |
 
 ---
 
-## Typography
+## Typography System
 
-Two font families are used throughout the theme:
-
-### Display font — Cinzel
-```css
---font-display: "Cinzel", "Playfair Display", Georgia, serif;
-```
-Used for: Section headings, product titles, hero headings, navigation brand name, all-caps labels. Cinzel is loaded from Google Fonts via a `<link>` in the layout. Playfair Display and Georgia are fallbacks.
-
-### Body font — Inter
-```css
---font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-```
-Used for: Body copy, UI labels, prices, buttons, form inputs, meta text. Inter is a system font on macOS 10.15+ and loaded from the system stack on all other platforms.
-
-### Logo tagline — Handwriting Draft
-A custom TTF font (`assets/handwriting-draft.ttf`) used **only** for the tagline text below the logo (`.header-logo__tagline`). Declared via `@font-face` in `sections/header.liquid`.
-
-### Type scale
-
-| Variable | Value | Use |
-|---|---|---|
-| `--text-display-xl` | `48px` | Hero headings |
-| `--text-display-lg` | `40px` | Section headings (article titles) |
-| `--text-display-md` | `32px` | Card headings |
-| `--text-display-sm` | `24px` | Sub-headings |
-| `--text-heading-lg` | `20px` | Component headings |
-| `--text-heading-md` | `18px` | Sub-component headings |
-| `--text-heading-sm` | `16px` | Small headings |
-| `--text-body-lg` | `18px` | Hero subheadings |
-| `--text-body-md` | `16px` | Default body text |
-| `--text-body-sm` | `14px` | Secondary body text, excerpts |
-| `--text-body-xs` | `12px` | Metadata, badges, labels |
-
----
-
-## Spacing scale
-
-The theme uses a fixed spacing scale from 4px to 64px:
-
-| Variable | Value |
-|---|---|
-| `--space-1` | `4px` |
-| `--space-2` | `8px` |
-| `--space-3` | `12px` |
-| `--space-4` | `16px` |
-| `--space-5` | `24px` |
-| `--space-6` | `32px` |
-| `--space-7` | `40px` |
-| `--space-8` | `48px` |
-| `--space-9` | `64px` |
-
-Use these consistently rather than writing raw pixel values, so spacing stays proportional across the whole theme.
-
----
-
-## Border radius
-
-| Variable | Value | Use |
-|---|---|---|
-| `--radius-sm` | `4px` | Badges, buttons, inputs, small tags |
-| `--radius-md` | `8px` | Filter groups, smaller cards |
-| `--radius-lg` | `12px` | Main cards, panels, sections |
-| `--radius-xl` | `16px` | Large modal-like surfaces |
-
----
-
-## Shadows
-
-| Variable | Value | Use |
-|---|---|---|
-| `--shadow-card` | `0 1px 4px 0 rgba(0,0,0,0.37)` | Default card shadow |
-| `--shadow-card-hover` | `0 3px 3px 0 rgb(236 128 20 / 15%), 0 3px 45px 0 rgb(225 125 25 / 30%)` | Orange glow on card hover |
-
-The hover shadow creates a characteristic orange glow effect — this is a deliberate design choice to reinforce the orange brand identity.
-
----
-
-## Transition
+### Font Families
 
 ```css
---transition-base: all 200ms ease;
+/* Headings (Serif Display) */
+font-family: "Cinzel", "Playfair Display", Georgia, serif;
+
+/* Body (Sans-Serif) */
+font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+/* Monospace */
+font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace;
 ```
 
-Used on most interactive elements (cards, buttons, links, icons). 200ms is fast enough to feel responsive but slow enough to be visible.
+### Heading Sizes
+
+| Level | Size   | Line Height | Letter Spacing |
+|-------|--------|-------------|----------------|
+| H1    | 40px   | 1.2         | 0.04em         |
+| H2    | 32px   | 1.25        | 0.04em         |
+| H3    | 24px   | 1.3         | 0.03em         |
+| H4    | 20px   | 1.35        | 0.02em         |
+
+### Body Text Sizes
+
+| Size   | Font Size | Line Height | Use Case              |
+|--------|-----------|-------------|-----------------------|
+| Large  | 20px      | 1.6         | Lead paragraphs       |
+| Base   | 16px      | 1.6         | Body text             |
+| Small  | 14px      | 1.5         | Captions, metadata    |
+| Micro  | 12px      | 1.4         | Labels, helper text   |
 
 ---
 
-## Global theme settings
+## Spacing System (8px Grid)
 
-A small subset of design values are exposed as **theme editor settings** in `config/settings_schema.json`. These feed into CSS variables:
+All layout spacing normalized to this grid:
 
-| Setting ID | CSS variable | Description |
-|---|---|---|
-| `type_primary_font` | `--font-primary--family` | Merchant-selected body font |
-| `max_page_width` | `--page-width` | Max container width (1280/1440/1600px) |
-| `min_page_margin` | `--page-margin` | Horizontal padding for the container |
-| `background_color` | `--color-background` | Used in a few legacy spots |
-| `foreground_color` | `--color-foreground` | Used in a few legacy spots |
-| `input_corner_radius` | `--style-border-radius-inputs` | Input border radius |
-
-:::warning
-The hardcoded design tokens in `css-variables.liquid` (the dark backgrounds, orange accents) take precedence over `settings_schema.json` values for the majority of the UI. If you change `background_color` in the theme editor, most of the site will **not** change color — you need to edit `css-variables.liquid` directly.
-
-The `settings_schema.json` color settings primarily exist as fallback references in `layout/theme.liquid` for the privacy banner overrides.
-:::
+| Token   | Value | Usage Examples                    |
+|---------|-------|-----------------------------------|
+| `space-1` | 4px   | Tight padding, small gaps         |
+| `space-2` | 8px   | Button vertical padding           |
+| `space-3` | 12px  | Icon spacing, small margins       |
+| `space-4` | 16px  | Section padding, card gaps        |
+| `space-5` | 24px  | Card internal padding             |
+| `space-6` | 32px  | Section spacing, grid gutters     |
+| `space-7` | 40px  | Hero sections, feature blocks     |
+| `space-8` | 48px  | Page margins, container padding   |
 
 ---
 
-## The `container` class
+## Radius System
 
-The max-width container is defined globally in `css-variables.liquid`:
+| Token     | Value | Component                    |
+|-----------|-------|------------------------------|
+| `radius-sm` | 6px   | Badges, small icons          |
+| `radius-md` | 10px  | Buttons, inputs              |
+| `radius-lg` | 14px  | Cards, panels                |
+| `radius-xl` | 20px  | Modals, popovers             |
+
+---
+
+## Elevation / Shadows
+
+### Base Card
 
 ```css
-.container {
-  width: 100%;
-  max-width: var(--page-width);   /* Default: 1280px */
-  margin: 0 auto;
-  padding: 0 var(--page-margin);  /* Default: 24px each side */
+box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+```
+
+### Hover Card
+
+```css
+box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+transform: translateY(-2px);
+transition: all 150ms;
+```
+
+---
+
+## Button System
+
+### Primary Button (CTA)
+
+```liquid
+<button class="button button--primary">
+  Add to Cart
+</button>
+```
+
+**States:**
+- **Default**: Background `accent-500` (#F97316)
+- **Hover**: Background `accent-600` (#EA580C)
+- **Active**: Background `accent-700` (#C2410C), scale 0.98
+
+### Secondary Button (Outline)
+
+```liquid
+<button class="button button--secondary">
+  Learn More
+</button>
+```
+
+**States:**
+- **Default**: Transparent background, slate border
+- **Hover**: Background becomes `bg-600` (#243247)
+
+### Ghost Button
+
+```liquid
+<button class="button button--ghost">
+  Edit
+</button>
+```
+
+**States:**
+- **Default**: Muted text, transparent background
+- **Hover**: Text color becomes `accent-500` (#F97316)
+
+---
+
+## Card System
+
+### Product Card
+
+```liquid
+<div class="product-card">
+  <div class="product-card__media">
+    <img src="{{ product.featured_image }}" alt="{{ product.title }}" />
+  </div>
+  <span class="product-card__category">Miniatures</span>
+  <h3 class="product-card__title">Battlefield Resin Skulls</h3>
+  <div class="product-card__price">
+    <span class="price">€24,95</span>
+    <button class="button button--primary">Add to Cart</button>
+  </div>
+</div>
+```
+
+**Structure:**
+1. Image (4:3 aspect ratio)
+2. Category label (small, uppercase)
+3. Title (serif, prominent)
+4. Price (accent color)
+5. Action button (bottom-right)
+
+### Blog Card
+
+```liquid
+<div class="blog-card">
+  <div class="blog-card__media">
+    <img src="{{ article.image }}" alt="{{ article.title }}" />
+  </div>
+  <span class="blog-card__category">Projects</span>
+  <h3 class="blog-card__title">Painting Factory Floor Bases</h3>
+  <p class="blog-card__excerpt">On request I painted factory floor bases...</p>
+  <div class="blog-card__footer">
+    <span class="blog-card__date">Feb 26 • 5 min read</span>
+    <a href="{{ article.url }}" class="blog-card__link">Read more →</a>
+  </div>
+</div>
+```
+
+---
+
+## Form System
+
+### Input Field
+
+```liquid
+<div class="form-field">
+  <label class="form-label" for="email">Email address</label>
+  <input 
+    type="email" 
+    id="email" 
+    name="email" 
+    class="form-input"
+    placeholder="Enter your email"
+  />
+</div>
+```
+
+**States:**
+- **Default**: Background `bg-600`, border `bg-500`
+- **Focus**: Border `accent-500`, shadow `accent-glow`
+- **Error**: Border `#EF4444`
+
+### Checkbox
+
+```liquid
+<label class="checkbox">
+  <input type="checkbox" name="newsletter" class="checkbox__input" />
+  <span class="checkbox__label">Subscribe to newsletter</span>
+</label>
+```
+
+---
+
+## Component Library
+
+### Badge
+
+```liquid
+<span class="badge badge--warning">Miniature</span>
+<span class="badge badge--success">New Arrival</span>
+<span class="badge badge--error">Out of Stock</span>
+```
+
+### Breadcrumbs
+
+```liquid
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="/" class="breadcrumbs__link">Home</a>
+  <span class="breadcrumbs__separator">/</span>
+  <a href="/collections/miniatures" class="breadcrumbs__link">Miniatures</a>
+  <span class="breadcrumbs__separator">/</span>
+  <span class="breadcrumbs__current" aria-current="page">Battlefield Skulls</span>
+</nav>
+```
+
+### Pagination
+
+```liquid
+<nav class="pagination" aria-label="Pagination">
+  <a href="?page=1" class="pagination__link pagination__link--prev">‹ Prev</a>
+  <a href="?page=1" class="pagination__link pagination__link--active">1</a>
+  <a href="?page=2" class="pagination__link">2</a>
+  <a href="?page=3" class="pagination__link">3</a>
+  <a href="?page=2" class="pagination__link pagination__link--next">Next ›</a>
+</nav>
+```
+
+---
+
+## Layout Grid
+
+### Container Settings
+
+```css
+max-width: 1280px;
+padding: 0 var(--space-6); /* 32px horizontal */
+```
+
+### Standard Two-Column Layout
+
+- Left content: 70% (approximately 900px at max width)
+- Right sidebar: 30% (approximately 380px at max width)
+- Gap: 32px (`space-6`)
+
+Mobile: Single column, cards stacked vertically
+
+---
+
+## Interaction System
+
+### Transitions
+
+```css
+transition: all 150ms cubic-bezier(.4,0,.2,1);
+```
+
+### Hover Lift Effect
+
+Applied to cards, buttons, and product tiles:
+
+```css
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 ```
 
-Used in almost every section: `<div class="container">...</div>`.
+### Focus States
 
-The `.full-width` class overrides the container to span 100% of the viewport:
+- Primary focus ring: `accent-glow` (3px offset)
+- Tab order maintained for keyboard navigation
+
+---
+
+## Responsive Breakpoints
+
+| Breakpoint | Width   | Usage                    |
+|------------|---------|--------------------------|
+| Mobile     | < 768px | Single column layout     |
+| Tablet     | 768px - 1024px | Two columns, stacked cards |
+| Desktop    | > 1024px | Full two-column grid     |
+
+---
+
+## CSS Variables Reference
+
 ```css
-.full-width {
-  width: 100%;
-  max-width: none;
+:root {
+  /* Background Scale */
+  --bg-900: #0F172A;
+  --bg-800: #162033;
+  --bg-700: #1E293B;
+  --bg-600: #243247;
+  --bg-500: #2C3B52;
+
+  /* Accent */
+  --accent-500: #F97316;
+  --accent-600: #EA580C;
+  --accent-700: #C2410C;
+  --accent-glow: rgba(249,115,22,.35);
+
+  /* Text */
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-disabled: #64748B;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 48px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  /* Typography */
+  --font-heading: "Cinzel, serif";
+  --font-body: Inter, system-sans-serif;
+  --font-mono: 'Fira Code', monospace;
+
+  /* Shadows */
+  --shadow-base: 0 4px 10px rgba(0,0,0,0.25);
+  --shadow-hover: 0 8px 20px rgba(0,0,0,0.4);
 }
 ```
 
 ---
 
-## Accessibility — WCAG contrast compliance
+## Component Documentation Links
 
-All text/background color combinations in the theme are verified against WCAG 2.1 standards. Key ratios:
-
-| Text | Background | Ratio | Standard |
-|---|---|---|---|
-| `--accent-500` (`#ff8b00`) | `--bg-800` (`#1a1f2b`) | **7.02:1** | AAA |
-| `--accent-500` | `--bg-900` (`#131720`) | **7.64:1** | AAA |
-| `--btn-primary-text` (`#0a0e16`) | `--accent-500` (`#ff8b00`) | **8.23:1** | AAA |
-| `--text-primary` (`#ffffff`) | `--bg-800` | **16.47:1** | AAA |
-| `--text-secondary` (`#cbd5e1`) | `--bg-800` | **11.10:1** | AAA |
-| `--price-color` (`#2ecc71`) | `--bg-800` | **7.84:1** | AAA |
-
-See [Accessibility](./accessibility) for the full compliance guide.
+| Component | Documentation File |
+|-----------|-------------------|
+| Buttons | [Buttons](./buttons) |
+| Cards | [Product Cards](./product-cards) |
+| Inputs | [Inputs](./inputs) |
+| Badges | [Badges](./badges) |
+| Breadcrumbs | [Breadcrumbs](./breadcrumbs) |
