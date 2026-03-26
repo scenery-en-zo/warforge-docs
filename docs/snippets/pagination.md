@@ -8,53 +8,58 @@ sidebar_label: Pagination
 
 **File:** `snippets/pagination.liquid`
 
-The pagination component renders navigation for paginated content with previous/next buttons and page numbers.
+Square button pagination with orange active state.
+
+## Visual Example
+
+<nav className="pagination" role="navigation">
+  <ul className="pagination__list">
+    <li className="pagination__item">
+      <button className="pagination__link pagination__link--prev" disabled aria-label="Previous">
+        <svg viewBox="0 0 24 24" style={{width: '16px', height: '16px'}}><path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" fill="none"/></svg>
+      </button>
+    </li>
+    <li className="pagination__item">
+      <span className="pagination__link is-active">1</span>
+    </li>
+    <li className="pagination__item">
+      <a href="/collections/all?page=2" className="pagination__link">2</a>
+    </li>
+    <li className="pagination__item">
+      <a href="/collections/all?page=3" className="pagination__link">3</a>
+    </li>
+    <li className="pagination__item">
+      <a href="/collections/all?page=2" className="pagination__link pagination__link--next" aria-label="Next">
+        <svg viewBox="0 0 24 24" style={{width: '16px', height: '16px'}}><path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" fill="none"/></svg>
+      </a>
+    </li>
+  </ul>
+</nav>
 
 ## Usage
 
 ```liquid
 {% paginate collection.products by 12 %}
-  <!-- Product grid -->
-  
   {% render 'pagination', paginate: paginate %}
 {% endpaginate %}
 ```
-
-## Parameters
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `paginate` | Object | Shopify paginate object |
 
 ## CSS Classes
 
 | Class | Description |
 |-------|-------------|
-| `.pagination` | Main navigation container |
-| `.pagination__list` | Unordered list wrapper |
-| `.pagination__item` | Individual page item |
-| `.pagination__link` | Page link/button |
-| `.pagination__link--prev` | Previous page button |
-| `.pagination__link--next` | Next page button |
-| `.pagination__link.is-active` | Current page indicator |
+| `.pagination__link` | Square button (40x40px) |
+| `.pagination__link.is-active` | Orange background |
+| `.pagination__link--prev` | Previous chevron |
+| `.pagination__link--next` | Next chevron |
 
-## Features
+## Styling
 
-- ✅ Previous/Next navigation with chevron icons
-- ✅ Page number links
-- ✅ Current page highlighting
-- ✅ Disabled state for boundary buttons
-- ✅ Accessible ARIA labels
-- ✅ Responsive design
-
-## States
-
-- **Active** - Orange background, indicates current page
-- **Default** - Dark background with border
-- **Hover** - Border and text highlight to accent color
-- **Disabled** - Reduced opacity for boundary buttons
+- Buttons: 40x40px squares
+- Default: Dark bg-800 with border
+- Active: Orange background
+- Hover: Orange border and text
 
 ## Related
 
-- [Icons](./snippets-icons) - Chevron icons
 - [Collection Pages](./templates-collection) - Product pagination

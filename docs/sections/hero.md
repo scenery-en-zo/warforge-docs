@@ -8,68 +8,40 @@ sidebar_label: Hero
 
 **File:** `sections/hero.liquid`
 
-The hero section renders a full-width hero banner with optional 3D particle effects, background images, and layered content.
+Full-width hero with background image, floating dice, and dual buttons.
+
+## Visual Preview
+
+<div style={{background: 'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1200 600\'%3E%3Crect fill=\'%231a1e28\' width=\'1200\' height=\'600\'/%3E%3C/svg%3E")', backgroundSize: 'cover', borderRadius: 'var(--radius-lg)', padding: '100px 40px', textAlign: 'center', position: 'relative', overflow: 'hidden', border: '1px solid var(--bg-700)', minHeight: '400px'}}>
+  <div style={{position: 'absolute', inset: 0, pointerEvents: 'none'}}>
+    <svg viewBox="0 0 100 100" style={{position: 'absolute', top: '20%', left: '15%', width: '60px', height: '60px', opacity: '0.3', stroke: 'var(--accent-500)', strokeWidth: '1', fill: 'none'}}>
+      <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5"></polygon>
+    </svg>
+    <svg viewBox="0 0 100 100" style={{position: 'absolute', top: '30%', right: '20%', width: '50px', height: '50px', opacity: '0.3', stroke: 'var(--accent-500)', strokeWidth: '1', fill: 'none'}}>
+      <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5"></polygon>
+    </svg>
+    <div style={{position: 'absolute', top: '60%', left: '10%', width: '3px', height: '3px', background: 'var(--accent-500)', borderRadius: '50%'}}></div>
+    <div style={{position: 'absolute', top: '40%', right: '30%', width: '2px', height: '2px', background: 'var(--accent-500)', borderRadius: '50%'}}></div>
+  </div>
+  <h1 style={{fontFamily: 'var(--font-display)', fontSize: '48px', marginBottom: '24px', color: 'white', fontWeight: '700', letterSpacing: '1px', textTransform: 'uppercase'}}>Welcome to Warforge</h1>
+  <p style={{fontSize: '16px', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 40px', lineHeight: '1.6'}}>Premium miniatures and terrain for tabletop gaming</p>
+  <div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap'}}>
+    <button className="btn btn--primary btn--lg" style={{display: 'inline-flex', height: '48px', padding: '0 32px', fontSize: '13px', fontWeight: '700', textTransform: 'uppercase'}}>Shop Now</button>
+    <button className="btn btn--secondary btn--lg" style={{display: 'inline-flex', height: '48px', padding: '0 32px', fontSize: '13px', fontWeight: '700', textTransform: 'uppercase', backgroundColor: 'var(--bg-700)', color: 'white', border: '1px solid var(--bg-600)'}}>Create Account</button>
+  </div>
+</div>
+
+## JavaScript Note
+
+Live site uses Three.js for floating particle effects. Preview shows static representation.
 
 ## Features
 
-- ✅ Full-width hero banner
-- ✅ 3D particle effects (Three.js)
-- ✅ Background image support
-- ✅ Separate mobile background option
-- ✅ Parallax scrolling effect
-- ✅ Multiple effect modes (embers, snow, etc.)
-- ✅ Adjustable intensity settings
-- ✅ Template-specific variants
-
-## Settings
-
-| Setting | Type | Default | Description |
-|---------|------|---------|-------------|
-| `background_image` | Image | - | Desktop background |
-| `mobile_background_image` | Image | - | Mobile background |
-| `enable_3d_fx` | Boolean | `true` | Enable particle effects |
-| `fx_mode` | Select | `embers` | Effect type |
-| `fx_intensity` | Range | `60` | Particle density |
-| `fx_parallax` | Boolean | `true` | Parallax scroll |
-| `fx_mobile_quality` | Select | `off` | Mobile performance |
-| `heading` | String | - | Hero title |
-| `subheading` | String | - | Hero subtitle |
-| `button_text` | String | - | CTA button text |
-| `button_url` | URL | - | CTA destination |
-
-## Data Attributes
-
-The hero uses data attributes for JavaScript configuration:
-
-```html
-<div
-  class="hero"
-  data-hero-three="true"
-  data-hero-effect="embers"
-  data-hero-intensity="60"
-  data-hero-parallax="true"
-  data-hero-mobile-quality="off"
-  data-hero-variant="home"
-  data-three-module-url="/cdn/shopify.com/.../three.module.min.js"
->
-```
-
-## CSS Classes
-
-| Class | Description |
-|-------|-------------|
-| `.hero` | Main hero container |
-| `.hero__background` | Background image layer |
-| `.hero__bg-image` | Background img element |
-| `.hero__fx-canvas` | Three.js canvas |
-| `.hero__content` | Content wrapper |
-| `.hero__inner` | Inner flex container |
-| `.hero__text-content` | Text content area |
-| `.hero__heading` | Hero title |
-| `.hero__subheading` | Hero subtitle |
-| `.hero__button` | CTA button wrapper |
+- Full-width background image
+- Floating geometric dice shapes
+- Dual button layout
+- Parallax scrolling
 
 ## Related
 
-- [Button](./snippets-buttons) - CTA button
-- [Image](./snippets-images) - Background images
+- [Button](./snippets-buttons) - CTA buttons

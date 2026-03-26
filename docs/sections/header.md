@@ -1,112 +1,62 @@
 ---
 id: sections-header
 title: Header
-sidebar_label: 'Header'
+sidebar_label: Header
 ---
 
 # Header Section
 
 **File:** `sections/header.liquid`
 
-The header section renders the site header with top bar, main navigation, mobile menu, and localization.
+Site header with top bar, logo, search, and navigation.
+
+## Visual Preview
+
+<div style={{backgroundColor: 'var(--bg-950)', borderBottom: '2px solid var(--accent-500)'}}>
+  <div style={{padding: '12px 24px', backgroundColor: 'var(--bg-900)', borderBottom: '1px solid var(--bg-700)'}}>
+    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '1400px', margin: '0 auto', fontSize: '12px'}}>
+      <div style={{display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-secondary)'}}>
+        <svg viewBox="0 0 24 24" style={{width: '16px', height: '16px', color: 'var(--accent-500)', fill: 'none', stroke: 'currentColor', strokeWidth: '2'}}><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+        <span>Free shipping on orders over €100</span>
+      </div>
+      <div style={{display: 'flex', gap: '24px', color: 'var(--text-secondary)'}}>
+        <span>Login</span>
+        <span>Create Account</span>
+        <span>Cart (0)</span>
+      </div>
+    </div>
+  </div>
+  <div style={{padding: '24px', backgroundColor: 'var(--bg-900)'}}>
+    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '1400px', margin: '0 auto'}}>
+      <div style={{textAlign: 'center'}}>
+        <div style={{fontFamily: 'var(--font-display)', fontSize: '24px', color: 'white', fontWeight: '700'}}>Scenery en Zo</div>
+        <div style={{fontSize: '12px', color: 'var(--text-secondary)'}}>Originaliteit door creativiteit</div>
+      </div>
+      <div style={{flex: '1', maxWidth: '500px', margin: '0 48px'}}>
+        <div style={{position: 'relative'}}>
+          <input type="text" placeholder="Search..." style={{width: '100%', padding: '12px 16px 12px 40px', backgroundColor: 'var(--bg-800)', border: '1px solid var(--bg-700)', borderRadius: 'var(--radius-md)', color: 'white'}} />
+          <svg viewBox="0 0 24 24" style={{position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', width: '18px', height: '18px', color: 'var(--text-muted)'}}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav style={{backgroundColor: 'var(--bg-800', borderTop: '1px solid var(--bg-700)'}}>
+    <ul style={{display: 'flex', listStyle: 'none', padding: '0', margin: '0', maxWidth: '1400px', margin: '0 auto'}}>
+      <li style={{padding: '16px 24px', color: 'white', backgroundColor: 'var(--accent-500)', fontWeight: '600'}}>Home</li>
+      <li style={{padding: '16px 24px', color: 'var(--text-secondary)'}}>About Us</li>
+      <li style={{padding: '16px 24px', color: 'var(--text-secondary)'}}>Contact</li>
+      <li style={{padding: '16px 24px', color: 'var(--text-secondary)'}}>Miniatures</li>
+    </ul>
+  </nav>
+</div>
 
 ## Structure
 
-```
-┌─────────────────────────────────────────┐
-│  Top Bar                                │
-│  ┌───────────────────────────────────┐  │
-│  │ Free Shipping | Login | Cart (0) │  │
-│  └───────────────────────────────────┘  │
-├─────────────────────────────────────────┤
-│  Main Header                            │
-│  ┌────── ┌────────────── ┌──────────┐  │
-│  │ Logo │ Navigation    │ Icons    │  │
-│  └────── └────────────── └──────────┘  │
-└─────────────────────────────────────────┘
-```
-
-## Features
-
-- ✅ Top bar with announcement and utility links
-- ✅ Main navigation with mega menu support
-- ✅ Mobile hamburger menu
-- ✅ Language selector (multi-language)
-- ✅ Cart icon with item count
-- ✅ Customer account links
-- ✅ Search functionality
-- ✅ Sticky header option
-
-## Blocks
-
-The header section supports the following block types:
-
-| Block Type | Description |
-|------------|-------------|
-| `logo` | Brand logo and name |
-| `navigation` | Main menu with dropdowns |
-| `icons` | Search, cart, user icons |
-| `localization` | Language/currency selector |
-
-## Settings
-
-| Setting | Type | Description |
-|---------|------|-------------|
-| `menu` | Link List | Main navigation menu |
-| `sticky` | Boolean | Enable sticky header |
-| `show_announcement` | Boolean | Show top bar announcement |
-| `announcement_text` | String | Free shipping text |
-
-## CSS Classes
-
-| Class | Description |
-|-------|-------------|
-| `.header-wrapper` | Main header container |
-| `.top-bar` | Top announcement bar |
-| `.top-bar__inner` | Top bar flex container |
-| `.top-bar__announcement` | Free shipping message |
-| `.top-bar__utility` | Utility links area |
-| `.top-bar__link` | Individual top bar link |
-| `.main-header` | Main header area |
-| `.main-header__inner` | Main header flex container |
-| `.main-header__brand` | Logo area |
-| `.main-header__navigation` | Nav menu area |
-| `.main-header__icons` | Icon buttons area |
-| `.header-logo` | Logo link |
-| `.header-logo__media` | Logo image/text |
-| `.mobile-menu-toggle` | Mobile hamburger button |
-| `.search-backdrop` | Search overlay |
-| `.language-selector` | Language dropdown |
-| `.language-list` | Language options |
-
-## Localization
-
-The header includes built-in language switching:
-
-```liquid
-{%- if localization.available_languages.size > 1 -%}
-  {%- form 'localization', id: 'HeaderLanguageForm' -%}
-    <div class="language-selector">
-      <button type="button" class="language-selector__btn">
-        <span class="lang-flag-text">🇬🇧 English</span>
-        {% render 'icon', name: 'chevron-down', size: 'sm' %}
-      </button>
-      <ul class="language-list">
-        {% for language in localization.available_languages %}
-          <li>
-            <button data-value="{{ language.iso_code }}">
-              {{ language.endonym_name }}
-            </button>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  {%- endform -%}
-{%- endif -%}
-```
+- Top bar: Shipping announcement with truck icon
+- Main header: Logo, search bar
+- Navigation: Horizontal menu
 
 ## Related
 
-- [Mega Menu](./snippets-mega-menu) - Dropdown navigation
-- [Icons](./snippets-icons) - Header icons
-- [Mobile Navigation](./navigation) - Mobile menu
+- [Icons](./snippets-icons) - Icons
+- [Navigation](./navigation) - Menu structure
