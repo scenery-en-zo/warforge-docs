@@ -9,8 +9,12 @@ const config = {
 
   future: { v4: true },
 
-  url: 'https://scenery-en-zo.myshopify.com',
-  baseUrl: '/',
+  // For GitHub Pages, update these values:
+  // If public repo: url: 'https://scenery-en-zo.github.io', baseUrl: '/warforge-docs/',
+  // If using custom domain: url: 'https://docs.yourdomain.com', baseUrl: '/',
+  url: 'https://scenery-en-zo.github.io',
+  baseUrl: '/warforge-docs/',
+  deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',

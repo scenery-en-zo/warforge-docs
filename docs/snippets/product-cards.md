@@ -12,7 +12,7 @@ The product card is the primary component for displaying products in grids, caro
 
 ## Visual Example
 
-<div class="product-card-demo">
+<div class="product-card-demo" style="max-width: 320px; margin: 0 auto;">
 <div class="product-card" data-product-card>
   <div class="product-card__media">
     <div class="product-card__placeholder-container">
