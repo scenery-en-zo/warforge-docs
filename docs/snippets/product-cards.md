@@ -2,17 +2,17 @@
 id: snippets-product-cards
 title: Product Cards
 sidebar_label: 'Product Cards'
-sidebar_position: 8
 ---
 
-# Product Card Component
+# Product Card Snippet
 
-The product card is the primary component for displaying products. It features the dark theme with orange accents, hover effects, and proper accessibility from the actual Warforge theme.
+**File:** `snippets/product-card.liquid`
 
-## Live Examples
+The product card is the primary component for displaying products in grids, carousels, and collection pages.
+
+## Visual Example
 
 <div class="product-card-demo">
-
 <div class="product-card" data-product-card>
   <div class="product-card__media">
     <div class="product-card__placeholder-container">
@@ -61,56 +61,9 @@ The product card is the primary component for displaying products. It features t
     </div>
   </div>
 </div>
-
-<div class="product-card" data-product-card style={{opacity: 0.8}}>
-  <div class="product-card__media">
-    <div class="product-card__placeholder-container" style={{opacity: 0.5}}>
-      <svg class="product-card__placeholder" viewBox="0 0 24 24">
-        <rect x="3" y="3" width="18" height="18" rx="2"/>
-        <circle cx="8.5" cy="8.5" r="1.5"/>
-        <path d="M21 15l-5-5L5 21"/>
-      </svg>
-    </div>
-  </div>
-  
-  <div class="product-card__content">
-    <div class="product-card__header">
-      <div class="product-card__meta-top">
-        <span class="product-card__category">Paints</span>
-        <span class="product-card__sku">SKU: WFG-002</span>
-      </div>
-      <h3 class="product-card__title">Professional Paint Set</h3>
-    </div>
-    
-    <div class="product-card__body">
-      <div class="product-card__price">
-        <span class="price-current">€34,95</span>
-      </div>
-    </div>
-    
-    <div class="product-card__footer">
-      <form class="product-card__form">
-        <button type="button" class="btn btn--primary product-card__btn" disabled>
-          <span class="btn__content">
-            <span class="btn__icon-wrapper">
-              <svg class="icon" viewBox="0 0 24 24">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </span>
-            <span class="btn__text">Sold Out</span>
-          </span>
-        </button>
-      </form>
-    </div>
-  </div>
 </div>
 
-</div>
-
-**Try it:** Hover over the cards to see the border change to orange, the card lift up, and the title turn white. The button also changes color on hover and presses down when clicked.
-
-## Component Usage
+## Usage
 
 ```liquid
 {% render 'product-card',
@@ -124,23 +77,17 @@ The product card is the primary component for displaying products. It features t
 %}
 ```
 
-## Key Features
+## Parameters
 
-### Visual Design
-- ✅ Dark theme background (`#1a1f2b`)
-- ✅ 2px border around entire card
-- ✅ Seamless unibody design (no image border)
-- ✅ Orange accent on hover
-- ✅ Badge in top-right corner
-- ✅ Category label (white, uppercase)
-- ✅ Orange product title (Cinzel font)
-- ✅ Green price with strikethrough for sale
-
-### Interactive States
-- ✅ Hover: Border turns orange, card lifts, image zooms
-- ✅ Active: Button presses down (scale 0.98)
-- ✅ Focus: Visible ring for keyboard navigation
-- ✅ Sold Out: Disabled button with X icon
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `product` | Object | Required | Shopify product object |
+| `image_loading` | String | `lazy` | Image loading: `lazy` or `eager` |
+| `image_fetchpriority` | String | `low` | Fetch priority: `low`, `high`, `auto` |
+| `image_decoding` | String | `async` | Image decoding: `async`, `sync`, `auto` |
+| `image_width` | Number | `320` | Base image width in pixels |
+| `image_widths` | String | See default | Responsive widths (comma-separated) |
+| `image_sizes` | String | See default | Image sizes attribute |
 
 ## CSS Classes
 
@@ -164,68 +111,18 @@ The product card is the primary component for displaying products. It features t
 | `.product-card__form` | Add to cart form |
 | `.product-card__btn` | Add to cart button |
 
-## Button States
+## Features
 
-The button uses the `.btn` classes from Warforge:
+- ✅ Unibody design (seamless image area)
+- ✅ Hover effects (border, lift, zoom)
+- ✅ Sale badge display
+- ✅ Wishlist integration
+- ✅ Sold out state
+- ✅ Responsive images
+- ✅ Accessibility compliant
 
-| State | Class | Effect |
-|-------|-------|--------|
-| Default | `.btn--primary` | Orange background |
-| Hover | `.btn--primary:hover` | Darker orange |
-| Active | `.btn--primary:active` | Pressed down (scale 0.98) |
-| Focus | `.btn:focus-visible` | Orange ring |
-| Disabled | `.btn:disabled` | Gray, not clickable |
+## Related
 
-## Badge Styling
-
-```liquid
-{% render 'badge',
-  text: '-20%',
-  variant: 'accent',
-  size: 'sm'
-%}
-```
-
-**Position:** Top-right corner of image area
-**Style:** Orange background, dark text, uppercase
-
-## Color Variables
-
-```css
---bg-950: #0a0e16  /* Hover background */
---bg-900: #131720  /* Page background */
---bg-800: #1a1f2b  /* Card background */
---bg-700: #3e4a5d  /* Placeholder gradient */
---bg-600: #4a5a73  /* Card border */
---accent-500: #ff8b00  /* Orange accent */
---accent-600: #e67a00  /* Button hover */
---accent-700: #cc6a00  /* Button active */
---price-color: #2ecc71  /* Green price */
---btn-primary-text: #0a0e16  /* Text on orange */
-```
-
-## Accessibility
-
-- ✅ Semantic HTML structure
-- ✅ Proper focus states
-- ✅ Keyboard navigation
-- ✅ Screen reader friendly
-- ✅ High contrast ratios
-- ✅ Clear sold out indication
-
-## Performance
-
-Images use responsive loading:
-
-```liquid
-image_loading: 'eager'  /* First 4 products */
-image_loading: 'lazy'   /* Rest */
-
-image_widths: '120,160,180,200,220,260,320'
-```
-
-## Related Components
-
-- [Buttons](./components/buttons) — Button component
-- [Icons](./components/icons) — Icon library
-- [Badges](./components/badges) — Badge component
+- [Buttons](./snippets-buttons) — Add to cart button
+- [Icons](./snippets-icons) — Cart icon
+- [Badges](./snippets-badges) — Sale badges

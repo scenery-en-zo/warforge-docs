@@ -4,22 +4,23 @@ title: Badges
 sidebar_label: 'Badges'
 ---
 
-# Badge Component
+# Badge Snippet
 
-The badge component displays small labels for status, discounts, or categories. Commonly used for sale percentages, new arrivals, and stock status.
+**File:** `snippets/badge.liquid`
+
+The badge component displays small labels for status, discounts, or categories.
 
 ## Visual Examples
 
 <div style={{display: 'flex', gap: '12px', flexWrap: 'wrap', padding: '24px', backgroundColor: 'var(--bg-900)', borderRadius: '12px', marginBottom: '24px'}}>
-  <span class="badge badge--accent badge--sm">-20%</span>
-  <span class="badge badge--accent badge--sm">New</span>
-  <span class="badge badge--accent badge--sm">Sale</span>
-  <span class="badge badge--sm" style={{backgroundColor: 'var(--bg-700)', color: 'var(--text-primary)'}}>Default</span>
-  <span class="badge badge--sm" style={{backgroundColor: 'var(--success)', color: 'white'}}>In Stock</span>
-  <span class="badge badge--sm" style={{backgroundColor: 'var(--error)', color: 'white'}}>Sold Out</span>
+  <span class="badge badge--accent badge--sm" style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'var(--accent-500)', color: 'var(--btn-primary-text)', padding: '3px 6px', borderRadius: 'var(--radius-sm)', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px'}}>-20%</span>
+  <span class="badge badge--accent badge--sm" style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'var(--accent-500)', color: 'var(--btn-primary-text)', padding: '3px 6px', borderRadius: 'var(--radius-sm)', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px'}}>New</span>
+  <span class="badge badge--sm" style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'var(--bg-700)', color: 'var(--text-primary)', padding: '3px 6px', borderRadius: 'var(--radius-sm)', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px'}}>Default</span>
+  <span class="badge badge--sm" style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'var(--success)', color: 'white', padding: '3px 6px', borderRadius: 'var(--radius-sm)', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px'}}>In Stock</span>
+  <span class="badge badge--sm" style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'var(--error)', color: 'white', padding: '3px 6px', borderRadius: 'var(--radius-sm)', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px'}}>Sold Out</span>
 </div>
 
-## Component Usage
+## Usage
 
 ```liquid
 {% render 'badge',
@@ -35,14 +36,13 @@ The badge component displays small labels for status, discounts, or categories. 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | `text` | String | Required | Badge text content |
-| `variant` | Select | `accent` | Badge variant: `accent`, `primary`, `success`, `warning`, `error` |
-| `size` | Select | `md` | Badge size: `sm`, `md` |
+| `variant` | Select | `accent` | Variant: `accent`, `primary`, `success`, `warning`, `error` |
+| `size` | Select | `md` | Size: `sm`, `md` |
 | `class` | String | — | Additional CSS classes |
 
 ## Variants
 
 ### Accent (Orange)
-
 Used for sale badges and highlights.
 
 ```liquid
@@ -53,30 +53,8 @@ Used for sale badges and highlights.
 %}
 ```
 
-<div style={{display: 'flex', gap: '12px', marginBottom: '24px'}}>
-  <span class="badge badge--accent badge--sm">-20%</span>
-  <span class="badge badge--accent badge--sm">New</span>
-</div>
-
-### Primary (Dark)
-
-Used for general labels.
-
-```liquid
-{% render 'badge', 
-  text: 'Label',
-  variant: 'primary',
-  size: 'sm'
-%}
-```
-
-<div style={{display: 'flex', gap: '12px', marginBottom: '24px'}}>
-  <span class="badge badge--sm" style={{backgroundColor: 'var(--bg-700)', color: 'var(--text-primary)'}}>Default</span>
-</div>
-
 ### Success (Green)
-
-Used for positive status (in stock, confirmed).
+Used for positive status (in stock).
 
 ```liquid
 {% render 'badge', 
@@ -86,30 +64,8 @@ Used for positive status (in stock, confirmed).
 %}
 ```
 
-<div style={{display: 'flex', gap: '12px', marginBottom: '24px'}}>
-  <span class="badge badge--sm" style={{backgroundColor: 'var(--success)', color: 'white'}}>In Stock</span>
-  <span class="badge badge--sm" style={{backgroundColor: 'var(--success)', color: 'white'}}>New Arrival</span>
-</div>
-
-### Warning (Yellow)
-
-Used for cautionary messages.
-
-```liquid
-{% render 'badge', 
-  text: 'Low Stock',
-  variant: 'warning',
-  size: 'sm'
-%}
-```
-
-<div style={{display: 'flex', gap: '12px', marginBottom: '24px'}}>
-  <span class="badge badge--sm" style={{backgroundColor: 'var(--warning)', color: '#000'}}>Low Stock</span>
-</div>
-
 ### Error (Red)
-
-Used for negative status (sold out, error).
+Used for negative status (sold out).
 
 ```liquid
 {% render 'badge', 
@@ -118,11 +74,6 @@ Used for negative status (sold out, error).
   size: 'sm'
 %}
 ```
-
-<div style={{display: 'flex', gap: '12px', marginBottom: '24px'}}>
-  <span class="badge badge--sm" style={{backgroundColor: 'var(--error)', color: 'white'}}>Sold Out</span>
-  <span class="badge badge--sm" style={{backgroundColor: 'var(--error)', color: 'white'}}>Error</span>
-</div>
 
 ## Sizes
 
@@ -159,18 +110,6 @@ Used for negative status (sold out, error).
 {% endif %}
 ```
 
-### New Product Badge
-
-```liquid
-{% if product.created_at > 'now' | date: '%s' | minus: 604800 %}
-  {% render 'badge', 
-    text: 'New',
-    variant: 'accent',
-    size: 'sm'
-  %}
-{% endif %}
-```
-
 ### Stock Status Badge
 
 ```liquid
@@ -189,25 +128,7 @@ Used for negative status (sold out, error).
 {% endif %}
 ```
 
-## Color Reference
+## Related
 
-```css
---accent-500: #ff8b00  /* Sale badges */
---success: #2ecc71     /* In stock */
---warning: #f1c40f     /* Low stock */
---error: #e74c3c       /* Sold out */
---bg-700: #3e4a5d      /* Default */
-```
-
-## Accessibility
-
-- Badges use sufficient color contrast
-- Text is uppercase for readability
-- Font size is legible (11px minimum)
-- Semantic meaning conveyed through color and text
-
-## Related Components
-
-- [Product Cards](../product-cards) — Badge placement on products
-- [Icons](./icons) — Icon badges alternative
-- [Buttons](./buttons) — Action badges
+- [Product Cards](./snippets-product-cards) — Badge placement
+- [Icons](./snippets-icons) — Icon badges alternative

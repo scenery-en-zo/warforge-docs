@@ -1,5 +1,5 @@
 ---
-id: advanced-performance
+id: advanced-advanced-advanced-performance
 title: Performance
 sidebar_label: 'Performance'
 ---

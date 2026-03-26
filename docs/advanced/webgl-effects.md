@@ -1,5 +1,5 @@
 ---
-id: advanced-webgl-effects
+id: advanced-advanced-advanced-webgl-effects
 title: WebGL Effects
 sidebar_label: 'WebGL Effects'
 ---

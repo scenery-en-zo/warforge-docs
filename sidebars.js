@@ -3,7 +3,6 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   themeSidebar: [
-    // Introduction
     {
       type: 'doc',
       id: 'index',
@@ -24,67 +23,71 @@ const sidebars = {
       id: 'architecture',
       label: 'Architecture',
     },
-    
-    // Design System
     {
-      type: 'category',
+      type: 'doc',
+      id: 'design-system',
       label: 'Design System',
-      collapsed: true,
-      items: [
-        'design-system',
-        'customization',
-        'accessibility',
-      ],
     },
-    
-    // Snippets (Shopify terminology)
     {
       type: 'category',
       label: 'Snippets',
       collapsed: false,
       items: [
-        'snippets-product-cards',
-        'snippets-buttons',
-        'snippets-icons',
-        'snippets-badges',
+        'snippets/snippets-index',
+        'snippets/snippets-product-cards',
+        'snippets/snippets-buttons',
+        'snippets/snippets-icons',
+        'snippets/snippets-badges',
+        'snippets/snippets-inputs',
+        'snippets/snippets-checkboxes',
+        'snippets/snippets-textareas',
+        'snippets/snippets-breadcrumbs',
+        'snippets/snippets-pagination',
+        'snippets/snippets-article-cards',
+        'snippets/snippets-cookie-banner',
+        'snippets/snippets-tables',
+        'snippets/snippets-images',
       ],
     },
-    
-    // Sections
     {
       type: 'category',
       label: 'Sections',
-      collapsed: true,
+      collapsed: false,
       items: [
-        'sections',
-        'snippets',
-        'navigation',
+        'sections/sections-index',
+        'sections/sections-header',
+        'sections/sections-footer',
+        'sections/sections-hero',
       ],
     },
-    
-    // Pages
     {
       type: 'category',
-      label: 'Pages',
-      collapsed: true,
+      label: 'Blocks',
+      collapsed: false,
       items: [
-        'pages/pages-cart',
-        'pages/pages-about',
-        'pages/pages-contact',
-        'pages/pages-account',
+        'blocks/blocks-index',
+        'blocks/blocks-group',
+        'blocks/blocks-text',
       ],
     },
-    
-    // Advanced
     {
       type: 'category',
-      label: 'Advanced',
-      collapsed: true,
+      label: 'Layout',
+      collapsed: false,
       items: [
-        'advanced/advanced-liquid-filters',
-        'advanced/advanced-metafields',
-        'advanced/advanced-webgl-effects',
-        'advanced/advanced-performance',
+        'layout/layout-index',
+        'layout/layout-theme',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Templates',
+      collapsed: false,
+      items: [
+        'templates/templates-index',
+        'templates/templates-product',
+        'templates/templates-collection',
+        'templates/templates-cart',
       ],
     },
   ],
