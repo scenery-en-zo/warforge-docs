@@ -397,7 +397,7 @@ Applied to cards, buttons, and product tiles:
 | Component | Documentation File |
 |-----------|-------------------|
 | Buttons | [Buttons](./buttons) |
-| Cards | [Product Cards](./product-cards) |
+| Cards | [Product Cards](../snippets/snippets-product-cards) |
 | Inputs | [Inputs](./inputs) |
 | Badges | [Badges](./badges) |
 | Breadcrumbs | [Breadcrumbs](./breadcrumbs) |

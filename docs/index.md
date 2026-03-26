@@ -39,7 +39,7 @@ The **Warforge** theme is a premium, production-ready Shopify theme built for **
 | [Snippets](./snippets) | Every reusable snippet — parameters and CSS classes |
 | [Templates](./templates) | Which sections appear on which page type |
 | [Navigation & Menus](./navigation) | How the header menus work |
-| [Product Cards](./product-cards) | How products are rendered in grids and sliders |
+| [Product Cards](../snippets/snippets-product-cards) | How products are rendered in grids and sliders |
 | [Accessibility](./accessibility) | WCAG compliance work and decisions |
 | [How to Customize](./customization) | Step-by-step guide to common changes |
 
