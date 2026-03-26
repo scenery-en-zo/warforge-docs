@@ -119,7 +119,7 @@ const sidebars = {
       label: 'Pages',
       collapsed: false,
       items: [
-        'pages/pages-summary',
+        'pages-summary',
         'pages/pages-about',
         'pages/pages-contact',
         'pages/pages-cart',
@@ -132,10 +132,10 @@ const sidebars = {
       label: 'Advanced',
       collapsed: true,
       items: [
-        'advanced/advanced-liquid-filters',
-        'advanced/advanced-metafields',
-        'advanced/advanced-webgl-effects',
-        'advanced/advanced-performance',
+        'advanced/advanced-advanced-advanced-liquid-filters',
+        'advanced/advanced-advanced-advanced-metafields',
+        'advanced/advanced-advanced-advanced-webgl-effects',
+        'advanced/advanced-advanced-advanced-performance',
       ],
     },
   ],
